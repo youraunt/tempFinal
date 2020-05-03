@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="TempFinal"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421\ Data\ Structures/TempFinal/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421\ Data\ Structures/TempFinal/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421\ Data\ Structures/TempFinal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421\ Data\ Structures/TempFinal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421\ Data\ Structures/TempFinal/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421\ Data\ Structures/TempFinal/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421\ Data\ Structures/TempFinal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421\ Data\ Structures/TempFinal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421\ Data\ Structures/TempFinal/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421\ Data\ Structures/TempFinal/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421\ Data\ Structures/TempFinal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421\ Data\ Structures/TempFinal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="TempFinal">
+				<Option output="/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/cmake-build-debug/TempFinal" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.3/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421\ Data\ Structures/TempFinal/cmake-build-debug/Makefile&quot;  VERBOSE=1 TempFinal"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421\ Data\ Structures/TempFinal/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421\ Data\ Structures/TempFinal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421\ Data\ Structures/TempFinal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="TempFinal/fast">
+				<Option output="/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/cmake-build-debug/TempFinal" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.3/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421\ Data\ Structures/TempFinal/cmake-build-debug/Makefile&quot;  VERBOSE=1 TempFinal/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421\ Data\ Structures/TempFinal/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421\ Data\ Structures/TempFinal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421\ Data\ Structures/TempFinal/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/Binary_Search_Tree.h">
+			<Option target="TempFinal"/>
+		</Unit>
+		<Unit filename="/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/Binary_Search_Tree.hpp">
+			<Option target="TempFinal"/>
+		</Unit>
+		<Unit filename="/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/Functions.cpp">
+			<Option target="TempFinal"/>
+		</Unit>
+		<Unit filename="/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/Functions.h">
+			<Option target="TempFinal"/>
+		</Unit>
+		<Unit filename="/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/Menu.cpp">
+			<Option target="TempFinal"/>
+		</Unit>
+		<Unit filename="/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/Menu.h">
+			<Option target="TempFinal"/>
+		</Unit>
+		<Unit filename="/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/Node.h">
+			<Option target="TempFinal"/>
+		</Unit>
+		<Unit filename="/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/Read_From_File.cpp">
+			<Option target="TempFinal"/>
+		</Unit>
+		<Unit filename="/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/Read_From_File.h">
+			<Option target="TempFinal"/>
+		</Unit>
+		<Unit filename="/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/main.cpp">
+			<Option target="TempFinal"/>
+		</Unit>
+		<Unit filename="/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
