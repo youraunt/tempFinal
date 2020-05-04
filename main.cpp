@@ -1,6 +1,5 @@
 #include <iostream>
-#include "Menu.h"
-
+#include "Menus.h"
 int main() {
     try {
         /// @brief Logical error on i/o operation
@@ -8,7 +7,7 @@ int main() {
         /// @param except, set to failbit, the error
         std::cin.exceptions(std::istream::failbit);
 
-        main_menu();
+        enter_program();
     } catch (const std::exception &) {
         //unknownInput();
     }///#catch

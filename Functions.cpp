@@ -6,153 +6,149 @@
 
 using namespace std;
 
-void exactSearchRecord(binary_search_tree<Final, string> &tree, Node<Final, string> *TreePtr, std::string &searchField,
-                       std::string &field) {
+void exactSearchRecord(std::string &user_input, std::string &to_search, Node<Final, string> *tree_pointer,
+                       binary_search_tree<Final, string> &tree_housing) {
     //Travel entire tree and find if record is match whichever user input
-
-
-    if (TreePtr == nullptr) {
+    if (tree_pointer == nullptr) {
         return;
     }
-    exactSearchRecord(tree, TreePtr->Left(), searchField, field);
-    if (searchField == "Name") {
-        if (TreePtr->Data().Name == field) {
-            tree.print(cout, TreePtr->Data());
+    exactSearchRecord(user_input, to_search, tree_pointer->leaf_left(), tree_housing);
+    if (to_search == "Name") {
+        if (tree_pointer->Data().Name == user_input) {
+            tree_housing.to_console(std::cout, tree_pointer->Data());
         }
-    } else if (searchField == "Film") {
-        if (TreePtr->Data().Film == field) {
-            tree.print(cout, TreePtr->Data());
+    } else if (to_search == "Film") {
+        if (tree_pointer->Data().Film == user_input) {
+            tree_housing.to_console(std::cout, tree_pointer->Data());
         }
-    } else if (searchField == "Year") {
-        if (TreePtr->Data().Year == field) {
-            tree.print(cout, TreePtr->Data());
+    } else if (to_search == "Year") {
+        if (tree_pointer->Data().Year == user_input) {
+            tree_housing.to_console(std::cout, tree_pointer->Data());
         }
-    } else if (searchField == "Nominations") {
-        if (to_string(TreePtr->Data().Nominations) == (field)) {
-            tree.print(cout, TreePtr->Data());
+    } else if (to_search == "Nominations") {
+        if (to_string(tree_pointer->Data().Nominations) == (user_input)) {
+            tree_housing.to_console(std::cout, tree_pointer->Data());
         }
-    } else if (searchField == "Rating") {
-        if (to_string(TreePtr->Data().Rating) == (field)) {
-            tree.print(cout, TreePtr->Data());
+    } else if (to_search == "Rating") {
+        if (to_string(tree_pointer->Data().Rating) == (user_input)) {
+            tree_housing.to_console(std::cout, tree_pointer->Data());
         }
-    } else if (searchField == "genre") {
-        if (TreePtr->Data().Genre1 == field || TreePtr->Data().Genre2 == field) {
-            tree.print(cout, TreePtr->Data());
+    } else if (to_search == "Genre") {
+        if (tree_pointer->Data().Genre1 == user_input || tree_pointer->Data().Genre2 == user_input) {
+            tree_housing.to_console(std::cout, tree_pointer->Data());
         }
-    } else if (searchField == "Release") {
-        if (TreePtr->Data().Release == field) {
-            tree.print(cout, TreePtr->Data());
+    } else if (to_search == "Release") {
+        if (tree_pointer->Data().Release == user_input) {
+            tree_housing.to_console(cout, tree_pointer->Data());
         }
     }
-    exactSearchRecord(tree, TreePtr->Right(), searchField, field);
+    exactSearchRecord(user_input, to_search, tree_pointer->leaf_right(), tree_housing);
 }
 
-void
-partialSearchRecord(binary_search_tree<Final, string> &tree, Node<Final, string> *TreePtr, std::string &searchField,
-                    std::string &field) {
+void partialSearchRecord(std::string &user_input, std::string &to_search, Node<Final, std::string> *tree_pointer,
+                         binary_search_tree<Final, std::string> &tree_housing) {
     //Travel entire tree and find if record is partial match whichever user input
-    if (TreePtr == nullptr) {
+    if (tree_pointer == nullptr) {
         return;
     }
-    partialSearchRecord(tree, TreePtr->Left(), searchField, field);
-    if (searchField == "Name") {
-        if (TreePtr->Data().Name.find(field) != std::string::npos) {
-            tree.print(cout, TreePtr->Data());
+    partialSearchRecord(user_input, to_search, tree_pointer->leaf_left(), tree_housing);
+    if (to_search == "Name") {
+        if (tree_pointer->Data().Name.find(user_input) != std::string::npos) {
+            tree_housing.to_console(std::cout, tree_pointer->Data());
         }
-    } else if (searchField == "Film") {
-        if (TreePtr->Data().Film.find(field) != std::string::npos) {
-            tree.print(cout, TreePtr->Data());
+    } else if (to_search == "Film") {
+        if (tree_pointer->Data().Film.find(user_input) != std::string::npos) {
+            tree_housing.to_console(std::cout, tree_pointer->Data());
         }
-    } else if (searchField == "Year") {
-        if (TreePtr->Data().Year.find(field) != std::string::npos) {
-            tree.print(cout, TreePtr->Data());
+    } else if (to_search == "Year") {
+        if (tree_pointer->Data().Year.find(user_input) != std::string::npos) {
+            tree_housing.to_console(cout, tree_pointer->Data());
         }
-    } else if (searchField == "Nominations") {
-        if (to_string(TreePtr->Data().Nominations).find(field) != std::string::npos) {
-            tree.print(cout, TreePtr->Data());
+    } else if (to_search == "Nominations") {
+        if (to_string(tree_pointer->Data().Nominations).find(user_input) != std::string::npos) {
+            tree_housing.to_console(cout, tree_pointer->Data());
         }
-    } else if (searchField == "Rating") {
-        if (to_string(TreePtr->Data().Rating).find(field) != std::string::npos) {
-            tree.print(cout, TreePtr->Data());
+    } else if (to_search == "Rating") {
+        if (to_string(tree_pointer->Data().Rating).find(user_input) != std::string::npos) {
+            tree_housing.to_console(cout, tree_pointer->Data());
         }
-    } else if (searchField == "genre") {
-        if (TreePtr->Data().Genre1.find(field) != std::string::npos ||
-            TreePtr->Data().Genre2.find(field) != std::string::npos) {
-            tree.print(cout, TreePtr->Data());
+    } else if (to_search == "Genre") {
+        if (tree_pointer->Data().Genre1.find(user_input) != std::string::npos ||
+            tree_pointer->Data().Genre2.find(user_input) != std::string::npos) {
+            tree_housing.to_console(cout, tree_pointer->Data());
         }
-    } else if (searchField == "Release") {
-        if (TreePtr->Data().Release.find(field) != std::string::npos) {
-            tree.print(cout, TreePtr->Data());
+    } else if (to_search == "Release") {
+        if (tree_pointer->Data().Release.find(user_input) != std::string::npos) {
+            tree_housing.to_console(cout, tree_pointer->Data());
         }
     }
-    partialSearchRecord(tree, TreePtr->Right(), searchField, field);
+    partialSearchRecord(user_input, to_search, tree_pointer->leaf_right(), tree_housing);
 
 }
 
-void addNewRecord(binary_search_tree<Final, string> &tree, std::string &fileName) {
+void add_entry(std::string &user_input, binary_search_tree<Final, std::string> &tree_housing) {
     Final newRecord;
-    if (fileName != "pictures.csv") {
-        cout << "Please input your new record as the following" << endl;
-        cout << "Year,Award,Winner,Name,Film" << endl;
-        cout << "Year:" << endl;
+    if (user_input != "pictures.csv") {
+        std::cout << "\nYear: ";
         cin >> newRecord.Year;
-        cout << "Award:" << endl;
+        cout << "\nAward: ";
         cin.ignore();
         getline(cin, newRecord.Award);
-        cout << "Winner:" << endl;
+        cout << "\nWinner:" << endl;
         cin >> newRecord.Winner;
-        cout << "Name:" << endl;
+        cout << "\nName:" << endl;
         cin.ignore();
         getline(cin, newRecord.Name);
-        cout << "Film" << endl;
+        cout << "\nFilm" << endl;
         getline(cin, newRecord.Film);
-        tree.addNode(newRecord.Name, newRecord);
+        tree_housing.add_node(newRecord.Name, newRecord);
     } else {
-        cout << "Please input your new record as the following" << endl;
-        cout << "name,year,Nominations,Rating,Duration,Genre1,Genre2,Release,Metacritic,Synopsis" << endl;
-        cout << "name:" << endl;
+        cout << "\nName:" << endl;
         cin.ignore();
         getline(cin, newRecord.Name);
-        cout << "year:" << endl;
+        cout << "\nYear:" << endl;
         getline(cin, newRecord.Year);
-        cout << "Nominations:" << endl;
+        cout << "\nNominations:" << endl;
         cin >> newRecord.Nominations;
-        cout << "Rating:" << endl;
+        cout << "\nRating:" << endl;
         cin >> newRecord.Rating;
-        cout << "Duration:" << endl;
+        cout << "\nDuration:" << endl;
         cin >> newRecord.Duration;
-        cout << "Genre1:" << endl;
+        cout << "\nGenre1:" << endl;
         cin.ignore();
         getline(cin, newRecord.Genre1);
-        cout << "Genre2:" << endl;
+        cout << "\nGenre2:" << endl;
         getline(cin, newRecord.Genre2);
-        cout << "Release:" << endl;
+        cout << "\nRelease:" << endl;
         getline(cin, newRecord.Release);
-        cout << "Metacritic:" << endl;
+        cout << "\nMeta-critic:" << endl;
         cin >> newRecord.Metacritic;
         cout << "Synopsis:" << endl;
         cin.ignore();
         getline(cin, newRecord.Synopsis);
-        tree.addNode(newRecord.Name, newRecord);
+        tree_housing.add_node(newRecord.Name, newRecord);
     }
     cout << "Successful add:" << endl;
-    tree.print(cout, newRecord);
+    tree_housing.to_console(cout, newRecord);
 }
 
-void deleteRecord(binary_search_tree<Final, string> &tree) {
+void delete_entry(binary_search_tree<Final, std::string> &tree) {
     //Travel the tree to find match record that user want to delete
     cout << "Please input name of actor you want to delete:" << endl;
     Final record;
     cin.ignore();
     getline(cin, record.Name);
-    if (tree.findNode(record.Name) != nullptr) {
-        tree.deleteNode(record.Name);
+    if (tree.find(record.Name) != nullptr) {
+        tree.delete_node(record.Name);
     } else {
         cout << "Record is already deleted or not in database" << endl;
     }
 }
 
-void modifyRecord(binary_search_tree<Final, string> &tree, std::string &fileName) {
+void modify_entry(
+        std::string &user_input,
+        binary_search_tree<Final, string> &tree_housing,
+        int choice = 0) {
     //Travel the tree and find match record and modify it
     Final changeRecord;
     Node<Final, string> *treePtr;
@@ -160,26 +156,24 @@ void modifyRecord(binary_search_tree<Final, string> &tree, std::string &fileName
     cout << "Please input name of record you want to modify. Please input name of actor or actress first:" << endl;
     cin.ignore();
     getline(cin, field);
-    treePtr = tree.findNode(field);
+    treePtr = tree_housing.find(field);
     if (treePtr == nullptr) {
         cout << "Record is not exist in database. You can't modify it" << endl;
     } else {
-        if (fileName == "pictures.csv") {
-            int menu;
+        if (user_input == "pictures.csv") {
             do {
                 std::cout
                         << "How would you want to change it" << std::endl
-                        << "Input 0 to change name" << std::endl
-                        << "input 1 to change year" << std::endl
-                        << "input 2 to change Nominations" << std::endl
-                        << "input 3 to change Rating" << std::endl
-                        << "input 4 to change Duration" << std::endl
-                        << "input 5 to change Genre1" << std::endl
+                        << "1. to change year" << std::endl
+                        << "2. to change Nominations" << std::endl
+                        << "3. to change Rating" << std::endl
+                        << "4. to change Duration" << std::endl
+                        << "5. to change Genre1" << std::endl
                         << "input 6 to change Genre2" << std::endl
                         << "input -1 if you want to exit" << std::endl;
-                std::cin >> menu;
+                std::cin >> choice;
                 changeRecord = treePtr->Data();
-                switch (menu) {
+                switch (choice) {
                     case 0: {
                         cout << "Input Name. For example: Birdman" << endl;
                         cin.ignore();
@@ -217,14 +211,15 @@ void modifyRecord(binary_search_tree<Final, string> &tree, std::string &fileName
                         break;
                     }
                     default: {
+                        std::cout << "Invalid Input!" << std::endl;
                         break;
                     }
                 }
                 treePtr->setData(changeRecord);
                 cout << "Your modified record is" << endl;
-                tree.print(cout, changeRecord);
-            } while (menu != -1);
-        } else if (fileName == "actor-actress.csv" || fileName == "Nominations.csv") {
+                tree_housing.to_console(cout, changeRecord);
+            } while (choice != 7);
+        } else if (user_input == "actor-actress.csv" || user_input == "Nominations.csv") {
             int menu;
             cout << "Record you want to change is in the database" << endl;
             do {
@@ -272,7 +267,7 @@ void modifyRecord(binary_search_tree<Final, string> &tree, std::string &fileName
                 }
                 treePtr->setData(changeRecord);
                 cout << "Your modified record is" << endl;
-                tree.print(cout, changeRecord);
+                tree_housing.to_console(cout, changeRecord);
             } while (menu != -1);
         } else {
             cout << "Sorry. File is not exist" << endl;
@@ -280,157 +275,167 @@ void modifyRecord(binary_search_tree<Final, string> &tree, std::string &fileName
     }
 }
 
-void mergeF(vector<Final> &myVector, int l, int m, int r, const std::string &mergeField) {
+void merge(const std::string &to_merge, vector<Final> &vector_housing, int lhs, int middle,
+           int rhs) {
     int i, j, k;
-    int n1 = m - l + 1;
-    int n2 = r - m;
+    int n1 = middle - lhs + 1;
+    int n2 = rhs - middle;
 
     /* create temp vector*/
-    vector<Final> L, R;
+    vector<Final> first, second;
 
-    /* Copy data to temp arrays L[] and R[] */
+    /* Copy data to temp arrays first[] and second[] */
     for (i = 0; i < n1; i++)
-        L.push_back(myVector[l + i]);
+        first.push_back(vector_housing[lhs + i]);
     for (j = 0; j < n2; j++)
-        R.push_back(myVector[m + 1 + j]);
+        second.push_back(vector_housing[middle + j + 1]);
 
     /* Merge the temp arrays back into vector*/
     i = 0; // Initial index of first subarray
     j = 0; // Initial index of second subarray
-    k = l; // Initial index of merged subarray
-    if (mergeField == "Film") {
+    k = lhs; // Initial index of merged subarray
+    if (to_merge == "Film") {
         while (i < n1 && j < n2) {
-            if (L[i].Film <= R[j].Film) {
-                myVector[k] = L[i];
+            if (first[i].Film <= second[j].Film) {
+                vector_housing[k] = first[i];
                 i++;
             } else {
-                myVector[k] = R[j];
+                vector_housing[k] = second[j];
                 j++;
             }
             k++;
         }
-    } else if (mergeField == "Year") {
+    } else if (to_merge == "Year") {
         while (i < n1 && j < n2) {
-            if (L[i].Year <= R[j].Year) {
-                myVector[k] = L[i];
+            if (first[i].Year <= second[j].Year) {
+                vector_housing[k] = first[i];
                 i++;
             } else {
-                myVector[k] = R[j];
+                vector_housing[k] = second[j];
                 j++;
             }
             k++;
         }
-    } else if (mergeField == "Rating") {
+    } else if (to_merge == "Rating") {
         while (i < n1 && j < n2) {
-            if (L[i].Rating <= R[j].Rating) {
-                myVector[k] = L[i];
+            if (first[i].Rating <= second[j].Rating) {
+                vector_housing[k] = first[i];
                 i++;
             } else {
-                myVector[k] = R[j];
+                vector_housing[k] = second[j];
                 j++;
             }
             k++;
         }
-    } else if (mergeField == "Nominations") {
+    } else if (to_merge == "Nominations") {
         while (i < n1 && j < n2) {
-            if (L[i].Nominations <= R[j].Nominations) {
-                myVector[k] = L[i];
+            if (first[i].Nominations <= second[j].Nominations) {
+                vector_housing[k] = first[i];
                 i++;
             } else {
-                myVector[k] = R[j];
+                vector_housing[k] = second[j];
                 j++;
             }
             k++;
         }
-    } else if (mergeField == "Genre1") {
+    } else if (to_merge == "Genre1") {
         while (i < n1 && j < n2) {
-            if (L[i].Rating <= R[j].Rating) {
-                myVector[k] = L[i];
+            if (first[i].Rating <= second[j].Rating) {
+                vector_housing[k] = first[i];
                 i++;
             } else {
-                myVector[k] = R[j];
+                vector_housing[k] = second[j];
                 j++;
             }
             k++;
         }
     }
-    /* Copy the remaining elements of L[], if there
+    /* Copy the remaining elements of first[], if there
        are any */
     while (i < n1) {
-        myVector[k] = L[i];
+        vector_housing[k] = first[i];
         i++;
         k++;
     }
 
-    /* Copy the remaining elements of R[], if there
+    /* Copy the remaining elements of second[], if there
        are any */
     while (j < n2) {
-        myVector[k] = R[j];
+        vector_housing[k] = second[j];
         j++;
         k++;
     }
-    L.clear();
-    R.clear();
+    first.clear();
+    second.clear();
 }
 
-void sortF(vector<Final> &myVector, int l, int r, std::string sortField) {
+void sort(const std::string &to_sort, vector<Final> &vector_housing, int lhs, int rhs) {
     //Merge sort
-    if (l < r) {
-        int m = l + (r - l) / 2;
-        sortF(myVector, l, m, sortField);
-        sortF(myVector, m + 1, r, sortField);
-        mergeF(myVector, l, m, r, sortField);
+    if (lhs < rhs) {
+        int m = lhs + (rhs - lhs) / 2;
+        sort(to_sort, vector_housing, lhs, m);
+        sort(to_sort, vector_housing, m + 1, rhs);
+        merge(to_sort, vector_housing, lhs, m, rhs);
     }
 }
 
-void printOutFile(binary_search_tree<Final, string> &tree, Node<Final, string> *node, std::string fileName) {
+void write_to_file(const std::string &user_input, Node<Final, string> *node,
+                   binary_search_tree<Final, string> &tree_housing) {
     if (node == nullptr)
         return;
-    ofstream updateFile;
-    if (fileName == "actor-actress.csv" || fileName == "Nominations.csv") {
-        string name;
-        name = "updated" + fileName;
-        updateFile.open(name);
-    } else if (fileName == "pictures.csv") {
-        string name;
-        name = "updated" + fileName;
-        updateFile.open(name);
-    }
-
-    printRecursive(tree, node, updateFile);
-
-    cout << "Successfully print out" << endl;
-    updateFile.close();
+    std::ofstream output("new_" + user_input, std::ios_base::out);
+    to_file(output, node, tree_housing);
+    output.close();
 }
 
-void printRecursive(binary_search_tree<Final, string> &tree, Node<Final, string> *node, std::ofstream &updateFile) {
-    if (node == nullptr)
+void to_file(std::ofstream &outfile, Node<Final, string> *node,
+             binary_search_tree<Final, string> &tree_housing) {
+    if (node == nullptr) {
         return;
-    printRecursive(tree, node->Left(), updateFile);
-    tree.print(updateFile, node->Data());
-    printRecursive(tree, node->Right(), updateFile);
+    }
+    to_file(outfile, node->leaf_left(), tree_housing);
+    tree_housing.to_console(outfile, node->Data());
+    to_file(outfile, node->leaf_right(), tree_housing);
 }
 
-void printOutVector(vector<Final> &myVector) {
-    for (const auto &iterator : myVector) {
-        (iterator.Synopsis.empty() ?
+void vector_to_console(vector<Final> &vector_storage) {
+
+    for (const auto &iterator : vector_storage) {
+        (iterator.Genre2.empty() ?
          cout
-                 << iterator.Year << ","
-                 << iterator.Award << ","
-                 << iterator.Winner << ","
-                 << iterator.Name << ","
-                 << iterator.Film :
+                 << GREEN_BOLD << "\nYear: " << CLEAR
+                 << iterator.Year << std::endl
+                 << GREEN_BOLD << "Award: " << CLEAR
+                 << iterator.Award << std::endl
+                 << GREEN_BOLD << "Winner: " << CLEAR
+                 << iterator.Winner << std::endl
+                 << GREEN_BOLD << "Name: " << CLEAR
+                 << iterator.Name << std::endl
+                 << GREEN_BOLD << "Film: " << CLEAR
+                 << iterator.Film << std::endl
+                                 :
          cout
-                 << iterator.Name << ","
-                 << iterator.Year << ","
-                 << iterator.Nominations << ","
-                 << iterator.Rating << ","
-                 << iterator.Duration << ","
-                 << iterator.Genre1 << ","
-                 << iterator.Genre2 << ","
-                 << iterator.Release << ","
-                 << iterator.Metacritic << ","
-                 << iterator.Synopsis)
-                << endl;
+                 << GREEN_BOLD << "\nName:" << CLEAR
+                 << iterator.Name << std::endl
+                 << GREEN_BOLD << "Year: " << CLEAR
+                 << iterator.Year << std::endl
+                 << GREEN_BOLD << "Nomination: " << CLEAR
+                 << iterator.Nominations << std::endl
+                 << GREEN_BOLD << "Rating: " << CLEAR
+                 << iterator.Rating << std::endl
+                 << GREEN_BOLD << "Duration: " << CLEAR
+                 << iterator.Duration << std::endl
+                 << GREEN_BOLD << "Genre 1: " << CLEAR
+                 << iterator.Genre1 << std::endl
+                 << GREEN_BOLD << "Genre 2: " << CLEAR
+                 << iterator.Genre2 << std::endl
+                 << GREEN_BOLD << "Release: " << CLEAR
+                 << iterator.Release << std::endl
+                 << GREEN_BOLD << "Meta-Critic: " << CLEAR
+                 << iterator.Metacritic << std::endl
+                 << GREEN_BOLD << "Synopsis: " << CLEAR
+                 << iterator.Synopsis << std::endl
+        );
     }
+
 }

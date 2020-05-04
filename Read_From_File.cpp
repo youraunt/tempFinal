@@ -5,11 +5,10 @@
 #include "Read_From_File.h"
 #include "Binary_Search_Tree.hpp"
 using namespace std;
-void readFromFile1(std::ifstream& inFile, binary_search_tree<Final, string>& tree, vector<Final>& myVector){
+void actor_in(std::ifstream& inFile, binary_search_tree<Final, string>& tree, vector<Final>& myVector){
     string s;
     Final tempData;
     getline(inFile,s);
-    cout << "Adding Nodes...\n";
     while(getline(inFile,s)){
         int size;
         string sub;
@@ -33,14 +32,14 @@ void readFromFile1(std::ifstream& inFile, binary_search_tree<Final, string>& tre
             sub = s;
             tempData.Film = sub;
 
-            tree.addNode(tempData.Name, tempData);
+            tree.add_node(tempData.Name, tempData);
             myVector.push_back(tempData);
 
         }
     }
     inFile.close();
 }
-void readFromFile2(std::ifstream& inFile, binary_search_tree<Final, string>& tree, vector<Final>& myVector){
+void picture_in(std::ifstream& inFile, binary_search_tree<Final, string>& picTree, vector<Final>& myVector){
     inFile.open("pictures.csv");
     string s;
     Final tempData;
@@ -90,7 +89,7 @@ void readFromFile2(std::ifstream& inFile, binary_search_tree<Final, string>& tre
             sub = s.substr(0, size);
             s = s.substr(size + 1);
             tempData.Synopsis = sub;
-            tree.addNode(tempData.Name, tempData);
+            picTree.add_node(tempData.Name, tempData);
             myVector.push_back(tempData);
 
 

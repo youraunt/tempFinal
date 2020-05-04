@@ -150,32 +150,32 @@ Functions.cpp.s:
 	$(MAKE) -f CMakeFiles/TempFinal.dir/build.make CMakeFiles/TempFinal.dir/Functions.cpp.s
 .PHONY : Functions.cpp.s
 
-Menu.o: Menu.cpp.o
+Menus.o: Menus.cpp.o
 
-.PHONY : Menu.o
+.PHONY : Menus.o
 
 # target to build an object file
-Menu.cpp.o:
-	$(MAKE) -f CMakeFiles/TempFinal.dir/build.make CMakeFiles/TempFinal.dir/Menu.cpp.o
-.PHONY : Menu.cpp.o
+Menus.cpp.o:
+	$(MAKE) -f CMakeFiles/TempFinal.dir/build.make CMakeFiles/TempFinal.dir/Menus.cpp.o
+.PHONY : Menus.cpp.o
 
-Menu.i: Menu.cpp.i
+Menus.i: Menus.cpp.i
 
-.PHONY : Menu.i
+.PHONY : Menus.i
 
 # target to preprocess a source file
-Menu.cpp.i:
-	$(MAKE) -f CMakeFiles/TempFinal.dir/build.make CMakeFiles/TempFinal.dir/Menu.cpp.i
-.PHONY : Menu.cpp.i
+Menus.cpp.i:
+	$(MAKE) -f CMakeFiles/TempFinal.dir/build.make CMakeFiles/TempFinal.dir/Menus.cpp.i
+.PHONY : Menus.cpp.i
 
-Menu.s: Menu.cpp.s
+Menus.s: Menus.cpp.s
 
-.PHONY : Menu.s
+.PHONY : Menus.s
 
 # target to generate assembly for a file
-Menu.cpp.s:
-	$(MAKE) -f CMakeFiles/TempFinal.dir/build.make CMakeFiles/TempFinal.dir/Menu.cpp.s
-.PHONY : Menu.cpp.s
+Menus.cpp.s:
+	$(MAKE) -f CMakeFiles/TempFinal.dir/build.make CMakeFiles/TempFinal.dir/Menus.cpp.s
+.PHONY : Menus.cpp.s
 
 Read_From_File.o: Read_From_File.cpp.o
 
@@ -243,9 +243,9 @@ help:
 	@echo "... Functions.o"
 	@echo "... Functions.i"
 	@echo "... Functions.s"
-	@echo "... Menu.o"
-	@echo "... Menu.i"
-	@echo "... Menu.s"
+	@echo "... Menus.o"
+	@echo "... Menus.i"
+	@echo "... Menus.s"
 	@echo "... Read_From_File.o"
 	@echo "... Read_From_File.i"
 	@echo "... Read_From_File.s"

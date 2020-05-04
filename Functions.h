@@ -13,27 +13,84 @@
 #include <fstream>
 #include "Binary_Search_Tree.hpp"
 
-void addNewRecord(binary_search_tree<Final, string> &tree, std::string &fileName);
+#define WHAT_IS(x) std::cerr << #x << " is " << x << std::endl;
 
-void deleteRecord(binary_search_tree<Final, string> &tree);
+/// @brief static const char array to display the menu header
+static const char MAIN_MENU_TITLE[] =
+        "\n\x1b[36m"
+        "-----------------------------------\n"
+        "|            Main Menu            |\n"
+        "-----------------------------------\n"
+        "\x1b[0m";
 
-void modifyRecord(binary_search_tree<Final, string> &tree, std::string &fileName);
+static const char SEARCH_SUB_MENU_TITLE[] =
+        "\n\x1b[36m"
+        "-----------------------------------\n"
+        "|           Search Menu           |\n"
+        "-----------------------------------\n"
+        "\x1b[0m";
+
+
+
+/// @brief colors
+#define CLEAR "\033[0m"
+#define RED_BOLD "\033[1m\033[31m"
+#define RED "\033[31m"
+#define YELLOW_BOLD "\033[1m\033[33m"
+#define YELLOW "\033[33m"
+#define MAGENTA_BOLD "\033[1m\033[35m"
+#define MAGENTA "\033[35m"
+#define CYAN_BOLD "\033[1m\033[36m"
+#define CYAN "\033[36m"
+#define BLUE_BOLD "\033[1m\033[34m"
+#define BLUE "\033[34m"
+#define BLACK_BOLD "\033[1m\033[30m"
+#define BLACK "\033[30m"
+#define GREEN_BOLD "\033[1m\033[32m"
+#define GREEN "\033[32m"
+#define WHITE_BOLD "\033[1m\033[37m"
+
+/// @brief Exits program successfully with message
+[[noreturn]] inline void exit_program() {
+    std::cout << "Exiting program!" << std::endl;
+    /// @brief I used EXIT_SUCCESS here to unwind the stack
+    exit(EXIT_SUCCESS);
+}
+
+[[noreturn]] inline void unknown_input() {
+    std::cerr << "\nError?! Unknown input.\n" << std::endl;
+    exit_program();
+}
+
+[[noreturn]] inline void fileNotFound() {
+    std::cout << "File not found!" << std::endl
+              << "Exiting Program!" << std::endl;
+    /// @brief winds down stack
+    exit(EXIT_FAILURE);
+}
+void add_entry(std::string &user_input, binary_search_tree<Final, string> &tree_housing);
+
+void delete_entry(binary_search_tree<Final, string> &tree);
+
+void modify_entry(std::string &user_input, binary_search_tree<Final, string> &tree_housing, int choice);
 
 void
-partialSearchRecord(binary_search_tree<Final, string> &tree, Node<Final, string> *TreePtr, std::string &searchField,
-                    std::string &field);
+partialSearchRecord(std::string &user_input, std::string &to_search, Node<Final, std::string> *tree_pointer,
+                    binary_search_tree<Final, std::string> &tree_housing);
 
-void exactSearchRecord(binary_search_tree<Final, string> &tree, Node<Final, string> *TreePtr, std::string &searchField,
-                       std::string &field);
+void exactSearchRecord(std::string &user_input, std::string &to_search, Node<Final, string> *tree_pointer,
+                       binary_search_tree<Final, string> &tree_housing);
 
-void sortF(vector<Final> &myVector, int l, int r, std::string sortField);
+void sort(const std::string& to_sort, vector<Final> &vector_housing, int lhs, int rhs);
 
-void mergeF(vector<Final> &myVector, int l, int m, int r, const std::string& mergeField);
+void merge(const std::string &to_merge, vector<Final> &vector_housing, int lhs, int middle,
+           int rhs);
 
-void printOutFile(binary_search_tree<Final, string> &tree, Node<Final, string> *node, std::string fileName);
+void
+write_to_file(const std::string &user_input, Node<Final, string> *node, binary_search_tree<Final, string> &tree_housing);
 
-void printRecursive(binary_search_tree<Final, string> &tree, Node<Final, string> *node, std::ofstream &updateFile);
+void to_file(std::ofstream &outfile, Node<Final, string> *node, binary_search_tree<Final, string> &tree_housing);
 
-void printOutVector(vector<Final> &myVector);
+void vector_to_console(vector<Final> &vector_storage);
 
 #endif //TEMPFINAL_FUNCTIONS_H

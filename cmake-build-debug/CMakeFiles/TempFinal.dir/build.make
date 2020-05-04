@@ -83,18 +83,18 @@ CMakeFiles/TempFinal.dir/Read_From_File.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TempFinal.dir/Read_From_File.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/Read_From_File.cpp" -o CMakeFiles/TempFinal.dir/Read_From_File.cpp.s
 
-CMakeFiles/TempFinal.dir/Menu.cpp.o: CMakeFiles/TempFinal.dir/flags.make
-CMakeFiles/TempFinal.dir/Menu.cpp.o: ../Menu.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/TempFinal.dir/Menu.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TempFinal.dir/Menu.cpp.o -c "/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/Menu.cpp"
+CMakeFiles/TempFinal.dir/Menus.cpp.o: CMakeFiles/TempFinal.dir/flags.make
+CMakeFiles/TempFinal.dir/Menus.cpp.o: ../Menus.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/TempFinal.dir/Menus.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TempFinal.dir/Menus.cpp.o -c "/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/Menus.cpp"
 
-CMakeFiles/TempFinal.dir/Menu.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TempFinal.dir/Menu.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/Menu.cpp" > CMakeFiles/TempFinal.dir/Menu.cpp.i
+CMakeFiles/TempFinal.dir/Menus.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TempFinal.dir/Menus.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/Menus.cpp" > CMakeFiles/TempFinal.dir/Menus.cpp.i
 
-CMakeFiles/TempFinal.dir/Menu.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TempFinal.dir/Menu.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/Menu.cpp" -o CMakeFiles/TempFinal.dir/Menu.cpp.s
+CMakeFiles/TempFinal.dir/Menus.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TempFinal.dir/Menus.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/Menus.cpp" -o CMakeFiles/TempFinal.dir/Menus.cpp.s
 
 CMakeFiles/TempFinal.dir/Functions.cpp.o: CMakeFiles/TempFinal.dir/flags.make
 CMakeFiles/TempFinal.dir/Functions.cpp.o: ../Functions.cpp
@@ -113,7 +113,7 @@ CMakeFiles/TempFinal.dir/Functions.cpp.s: cmake_force
 TempFinal_OBJECTS = \
 "CMakeFiles/TempFinal.dir/main.cpp.o" \
 "CMakeFiles/TempFinal.dir/Read_From_File.cpp.o" \
-"CMakeFiles/TempFinal.dir/Menu.cpp.o" \
+"CMakeFiles/TempFinal.dir/Menus.cpp.o" \
 "CMakeFiles/TempFinal.dir/Functions.cpp.o"
 
 # External object files for target TempFinal
@@ -121,7 +121,7 @@ TempFinal_EXTERNAL_OBJECTS =
 
 TempFinal: CMakeFiles/TempFinal.dir/main.cpp.o
 TempFinal: CMakeFiles/TempFinal.dir/Read_From_File.cpp.o
-TempFinal: CMakeFiles/TempFinal.dir/Menu.cpp.o
+TempFinal: CMakeFiles/TempFinal.dir/Menus.cpp.o
 TempFinal: CMakeFiles/TempFinal.dir/Functions.cpp.o
 TempFinal: CMakeFiles/TempFinal.dir/build.make
 TempFinal: CMakeFiles/TempFinal.dir/link.txt

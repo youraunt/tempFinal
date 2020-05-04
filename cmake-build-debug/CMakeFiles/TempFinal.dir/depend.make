@@ -7,13 +7,13 @@ CMakeFiles/TempFinal.dir/Functions.cpp.o: ../Functions.cpp
 CMakeFiles/TempFinal.dir/Functions.cpp.o: ../Functions.h
 CMakeFiles/TempFinal.dir/Functions.cpp.o: ../Node.h
 
-CMakeFiles/TempFinal.dir/Menu.cpp.o: ../Binary_Search_Tree.h
-CMakeFiles/TempFinal.dir/Menu.cpp.o: ../Binary_Search_Tree.hpp
-CMakeFiles/TempFinal.dir/Menu.cpp.o: ../Functions.h
-CMakeFiles/TempFinal.dir/Menu.cpp.o: ../Menu.cpp
-CMakeFiles/TempFinal.dir/Menu.cpp.o: ../Menu.h
-CMakeFiles/TempFinal.dir/Menu.cpp.o: ../Node.h
-CMakeFiles/TempFinal.dir/Menu.cpp.o: ../Read_From_File.h
+CMakeFiles/TempFinal.dir/Menus.cpp.o: ../Binary_Search_Tree.h
+CMakeFiles/TempFinal.dir/Menus.cpp.o: ../Binary_Search_Tree.hpp
+CMakeFiles/TempFinal.dir/Menus.cpp.o: ../Functions.h
+CMakeFiles/TempFinal.dir/Menus.cpp.o: ../Menus.cpp
+CMakeFiles/TempFinal.dir/Menus.cpp.o: ../Menus.h
+CMakeFiles/TempFinal.dir/Menus.cpp.o: ../Node.h
+CMakeFiles/TempFinal.dir/Menus.cpp.o: ../Read_From_File.h
 
 CMakeFiles/TempFinal.dir/Read_From_File.cpp.o: ../Binary_Search_Tree.h
 CMakeFiles/TempFinal.dir/Read_From_File.cpp.o: ../Binary_Search_Tree.hpp
@@ -24,7 +24,7 @@ CMakeFiles/TempFinal.dir/Read_From_File.cpp.o: ../Read_From_File.h
 CMakeFiles/TempFinal.dir/main.cpp.o: ../Binary_Search_Tree.h
 CMakeFiles/TempFinal.dir/main.cpp.o: ../Binary_Search_Tree.hpp
 CMakeFiles/TempFinal.dir/main.cpp.o: ../Functions.h
-CMakeFiles/TempFinal.dir/main.cpp.o: ../Menu.h
+CMakeFiles/TempFinal.dir/main.cpp.o: ../Menus.h
 CMakeFiles/TempFinal.dir/main.cpp.o: ../Node.h
 CMakeFiles/TempFinal.dir/main.cpp.o: ../Read_From_File.h
 CMakeFiles/TempFinal.dir/main.cpp.o: ../main.cpp

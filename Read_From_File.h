@@ -8,6 +8,6 @@
 #include <iostream>
 #include <vector>
 #include "Binary_Search_Tree.h"
-void readFromFile1(std::ifstream& inFile, binary_search_tree<Final, string>& tree, vector<Final>& myVector);
-void readFromFile2(std::ifstream& inFile, binary_search_tree<Final, string>& picTree, vector<Final>& myVector);
+void actor_in(std::ifstream& inFile, binary_search_tree<Final, string>& tree, vector<Final>& myVector);
+void picture_in(std::ifstream& inFile, binary_search_tree<Final, string>& picTree, vector<Final>& myVector);
 #endif //TEMPFINAL_READ_FROM_FILE_H
