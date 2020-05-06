@@ -11,44 +11,44 @@
 using namespace std;
 
 // Binary Search Tree class
-template<typename data_type, typename key_type>
-class binary_search_tree {
+template<typename DATATYPE, typename KEYTYPE>
+class Binary_Search_Tree {
 private:
-    Node<data_type, key_type> *root;
+    Node<DATATYPE, KEYTYPE> *root;
 
-    Node<data_type, key_type> *find_node(key_type key, Node<data_type, key_type> *node);
+    Node<DATATYPE, KEYTYPE> *find_node(KEYTYPE key, Node<DATATYPE, KEYTYPE> *node);
 
-    Node<data_type, key_type> *delete_node(Node<data_type, key_type> *_root, key_type key);
+    Node<DATATYPE, KEYTYPE> * remove_node(Node<DATATYPE, KEYTYPE> *_root, KEYTYPE key);
 
-    void insert_node(key_type key, Node<data_type, key_type> *leaf, data_type &data);
+    void insert_node(KEYTYPE key, Node<DATATYPE, KEYTYPE> *leaf, DATATYPE &data);
 
-    void free_node(Node<data_type, key_type> *leaf);
+    Node_Struct * make_empty(Node<DATATYPE, KEYTYPE> *leaf);
 
-    void in_order(Node<data_type, key_type> *node);
+    void in_order(Node<DATATYPE, KEYTYPE> *node);
 
 
 public:
-    binary_search_tree<data_type, key_type>();
+    Binary_Search_Tree<DATATYPE, KEYTYPE>();
 
-    ~binary_search_tree<data_type, key_type>();
+    ~Binary_Search_Tree<DATATYPE, KEYTYPE>();
 
-    Node<data_type, key_type> *find(key_type key);
+    Node<DATATYPE, KEYTYPE> *find(KEYTYPE key);
 
-    Node<data_type, key_type> *find_min(Node<data_type, key_type> *node);
+    Node<DATATYPE, KEYTYPE> *find_min(Node<DATATYPE, KEYTYPE> *node);
 
-    Node<data_type, key_type> *find_max(Node<data_type, key_type> *node);
+    Node<DATATYPE, KEYTYPE> *find_max(Node<DATATYPE, KEYTYPE> *node);
 
-    Node<data_type, key_type> *_root() { return root; }
+    Node<DATATYPE, KEYTYPE> *_root() { return root; }
 
-    void initialize_root(Node<data_type, key_type> *this_root) { root = this_root; }
+    void initialize_root(Node<DATATYPE, KEYTYPE> *this_root) { root = this_root; }
 
-    void add_node(key_type key, data_type &data);
+    void add_node(KEYTYPE key, DATATYPE &data);
 
     void in_order();
 
-    void to_console(ostream &out, const data_type &d);
+    void display(ostream &output, const DATATYPE &data);
 
-    void delete_node(key_type k);
+    void remove(KEYTYPE key);
 
 
 };

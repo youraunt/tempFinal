@@ -6,8 +6,8 @@
 
 using namespace std;
 
-void exactSearchRecord(std::string &user_input, std::string &to_search, Node<Final, string> *tree_pointer,
-                       binary_search_tree<Final, string> &tree_housing) {
+void exactSearchRecord(std::string &user_input, std::string &to_search, Node<Node_Struct, string> *tree_pointer,
+                       Binary_Search_Tree<Node_Struct, string> &tree_housing) {
     //Travel entire tree and find if record is match whichever user input
     if (tree_pointer == nullptr) {
         return;
@@ -15,38 +15,38 @@ void exactSearchRecord(std::string &user_input, std::string &to_search, Node<Fin
     exactSearchRecord(user_input, to_search, tree_pointer->leaf_left(), tree_housing);
     if (to_search == "Name") {
         if (tree_pointer->Data().Name == user_input) {
-            tree_housing.to_console(std::cout, tree_pointer->Data());
+            tree_housing.display(std::cout, tree_pointer->Data());
         }
     } else if (to_search == "Film") {
         if (tree_pointer->Data().Film == user_input) {
-            tree_housing.to_console(std::cout, tree_pointer->Data());
+            tree_housing.display(std::cout, tree_pointer->Data());
         }
     } else if (to_search == "Year") {
         if (tree_pointer->Data().Year == user_input) {
-            tree_housing.to_console(std::cout, tree_pointer->Data());
+            tree_housing.display(std::cout, tree_pointer->Data());
         }
     } else if (to_search == "Nominations") {
         if (to_string(tree_pointer->Data().Nominations) == (user_input)) {
-            tree_housing.to_console(std::cout, tree_pointer->Data());
+            tree_housing.display(std::cout, tree_pointer->Data());
         }
     } else if (to_search == "Rating") {
         if (to_string(tree_pointer->Data().Rating) == (user_input)) {
-            tree_housing.to_console(std::cout, tree_pointer->Data());
+            tree_housing.display(std::cout, tree_pointer->Data());
         }
     } else if (to_search == "Genre") {
         if (tree_pointer->Data().Genre1 == user_input || tree_pointer->Data().Genre2 == user_input) {
-            tree_housing.to_console(std::cout, tree_pointer->Data());
+            tree_housing.display(std::cout, tree_pointer->Data());
         }
     } else if (to_search == "Release") {
         if (tree_pointer->Data().Release == user_input) {
-            tree_housing.to_console(cout, tree_pointer->Data());
+            tree_housing.display(cout, tree_pointer->Data());
         }
     }
     exactSearchRecord(user_input, to_search, tree_pointer->leaf_right(), tree_housing);
 }
 
-void partialSearchRecord(std::string &user_input, std::string &to_search, Node<Final, std::string> *tree_pointer,
-                         binary_search_tree<Final, std::string> &tree_housing) {
+void partialSearchRecord(std::string &user_input, std::string &to_search, Node<Node_Struct, std::string> *tree_pointer,
+                         Binary_Search_Tree<Node_Struct, std::string> &tree_housing) {
     //Travel entire tree and find if record is partial match whichever user input
     if (tree_pointer == nullptr) {
         return;
@@ -54,40 +54,40 @@ void partialSearchRecord(std::string &user_input, std::string &to_search, Node<F
     partialSearchRecord(user_input, to_search, tree_pointer->leaf_left(), tree_housing);
     if (to_search == "Name") {
         if (tree_pointer->Data().Name.find(user_input) != std::string::npos) {
-            tree_housing.to_console(std::cout, tree_pointer->Data());
+            tree_housing.display(std::cout, tree_pointer->Data());
         }
     } else if (to_search == "Film") {
         if (tree_pointer->Data().Film.find(user_input) != std::string::npos) {
-            tree_housing.to_console(std::cout, tree_pointer->Data());
+            tree_housing.display(std::cout, tree_pointer->Data());
         }
     } else if (to_search == "Year") {
         if (tree_pointer->Data().Year.find(user_input) != std::string::npos) {
-            tree_housing.to_console(cout, tree_pointer->Data());
+            tree_housing.display(cout, tree_pointer->Data());
         }
     } else if (to_search == "Nominations") {
         if (to_string(tree_pointer->Data().Nominations).find(user_input) != std::string::npos) {
-            tree_housing.to_console(cout, tree_pointer->Data());
+            tree_housing.display(cout, tree_pointer->Data());
         }
     } else if (to_search == "Rating") {
         if (to_string(tree_pointer->Data().Rating).find(user_input) != std::string::npos) {
-            tree_housing.to_console(cout, tree_pointer->Data());
+            tree_housing.display(cout, tree_pointer->Data());
         }
     } else if (to_search == "Genre") {
         if (tree_pointer->Data().Genre1.find(user_input) != std::string::npos ||
             tree_pointer->Data().Genre2.find(user_input) != std::string::npos) {
-            tree_housing.to_console(cout, tree_pointer->Data());
+            tree_housing.display(cout, tree_pointer->Data());
         }
     } else if (to_search == "Release") {
         if (tree_pointer->Data().Release.find(user_input) != std::string::npos) {
-            tree_housing.to_console(cout, tree_pointer->Data());
+            tree_housing.display(cout, tree_pointer->Data());
         }
     }
     partialSearchRecord(user_input, to_search, tree_pointer->leaf_right(), tree_housing);
 
 }
 
-void add_entry(std::string &user_input, binary_search_tree<Final, std::string> &tree_housing) {
-    Final newRecord;
+void add_entry(std::string &user_input, Binary_Search_Tree<Node_Struct, std::string> &tree_housing) {
+    Node_Struct newRecord;
     if (user_input != "pictures.csv") {
         std::cout << "\nYear: ";
         cin >> newRecord.Year;
@@ -122,24 +122,24 @@ void add_entry(std::string &user_input, binary_search_tree<Final, std::string> &
         cout << "\nRelease:" << endl;
         getline(cin, newRecord.Release);
         cout << "\nMeta-critic:" << endl;
-        cin >> newRecord.Metacritic;
+        cin >> newRecord.Meta_Critic;
         cout << "Synopsis:" << endl;
         cin.ignore();
         getline(cin, newRecord.Synopsis);
         tree_housing.add_node(newRecord.Name, newRecord);
     }
     cout << "Successful add:" << endl;
-    tree_housing.to_console(cout, newRecord);
+    tree_housing.display(cout, newRecord);
 }
 
-void delete_entry(binary_search_tree<Final, std::string> &tree) {
+void delete_entry(Binary_Search_Tree<Node_Struct, std::string> &tree) {
     //Travel the tree to find match record that user want to delete
     cout << "Please input name of actor you want to delete:" << endl;
-    Final record;
+    Node_Struct record;
     cin.ignore();
     getline(cin, record.Name);
     if (tree.find(record.Name) != nullptr) {
-        tree.delete_node(record.Name);
+        tree.remove(record.Name);
     } else {
         cout << "Record is already deleted or not in database" << endl;
     }
@@ -147,11 +147,11 @@ void delete_entry(binary_search_tree<Final, std::string> &tree) {
 
 void modify_entry(
         std::string &user_input,
-        binary_search_tree<Final, string> &tree_housing,
+        Binary_Search_Tree<Node_Struct, string> &tree_housing,
         int choice = 0) {
     //Travel the tree and find match record and modify it
-    Final changeRecord;
-    Node<Final, string> *treePtr;
+    Node_Struct changeRecord;
+    Node<Node_Struct, string> *treePtr;
     string field;
     cout << "Please input name of record you want to modify. Please input name of actor or actress first:" << endl;
     cin.ignore();
@@ -217,7 +217,7 @@ void modify_entry(
                 }
                 treePtr->setData(changeRecord);
                 cout << "Your modified record is" << endl;
-                tree_housing.to_console(cout, changeRecord);
+                tree_housing.display(cout, changeRecord);
             } while (choice != 7);
         } else if (user_input == "actor-actress.csv" || user_input == "Nominations.csv") {
             int menu;
@@ -267,7 +267,7 @@ void modify_entry(
                 }
                 treePtr->setData(changeRecord);
                 cout << "Your modified record is" << endl;
-                tree_housing.to_console(cout, changeRecord);
+                tree_housing.display(cout, changeRecord);
             } while (menu != -1);
         } else {
             cout << "Sorry. File is not exist" << endl;
@@ -275,14 +275,14 @@ void modify_entry(
     }
 }
 
-void merge(const std::string &to_merge, vector<Final> &vector_housing, int lhs, int middle,
+void merge(const std::string &to_merge, vector<Node_Struct> &vector_housing, int lhs, int middle,
            int rhs) {
     int i, j, k;
     int n1 = middle - lhs + 1;
     int n2 = rhs - middle;
 
     /* create temp vector*/
-    vector<Final> first, second;
+    vector<Node_Struct> first, second;
 
     /* Copy data to temp arrays first[] and second[] */
     for (i = 0; i < n1; i++)
@@ -369,7 +369,7 @@ void merge(const std::string &to_merge, vector<Final> &vector_housing, int lhs, 
     second.clear();
 }
 
-void sort(const std::string &to_sort, vector<Final> &vector_housing, int lhs, int rhs) {
+void sort(const std::string &to_sort, vector<Node_Struct> &vector_housing, int lhs, int rhs) {
     //Merge sort
     if (lhs < rhs) {
         int m = lhs + (rhs - lhs) / 2;
@@ -379,8 +379,8 @@ void sort(const std::string &to_sort, vector<Final> &vector_housing, int lhs, in
     }
 }
 
-void write_to_file(const std::string &user_input, Node<Final, string> *node,
-                   binary_search_tree<Final, string> &tree_housing) {
+void write_to_file(const std::string &user_input, Node<Node_Struct, string> *node,
+                   Binary_Search_Tree<Node_Struct, string> &tree_housing) {
     if (node == nullptr)
         return;
     std::ofstream output("new_" + user_input, std::ios_base::out);
@@ -388,17 +388,17 @@ void write_to_file(const std::string &user_input, Node<Final, string> *node,
     output.close();
 }
 
-void to_file(std::ofstream &outfile, Node<Final, string> *node,
-             binary_search_tree<Final, string> &tree_housing) {
+void to_file(std::ofstream &outfile, Node<Node_Struct, string> *node,
+             Binary_Search_Tree<Node_Struct, string> &tree_housing) {
     if (node == nullptr) {
         return;
     }
     to_file(outfile, node->leaf_left(), tree_housing);
-    tree_housing.to_console(outfile, node->Data());
+    tree_housing.display(outfile, node->Data());
     to_file(outfile, node->leaf_right(), tree_housing);
 }
 
-void vector_to_console(vector<Final> &vector_storage) {
+void vector_to_console(vector<Node_Struct> &vector_storage) {
 
     for (const auto &iterator : vector_storage) {
         (iterator.Genre2.empty() ?
@@ -432,7 +432,7 @@ void vector_to_console(vector<Final> &vector_storage) {
                  << GREEN_BOLD << "Release: " << CLEAR
                  << iterator.Release << std::endl
                  << GREEN_BOLD << "Meta-Critic: " << CLEAR
-                 << iterator.Metacritic << std::endl
+                 << iterator.Meta_Critic << std::endl
                  << GREEN_BOLD << "Synopsis: " << CLEAR
                  << iterator.Synopsis << std::endl
         );

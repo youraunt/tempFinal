@@ -5,7 +5,7 @@
 #include "Menus.h"
 
 
-void add_sub_menu(std::string user_input, binary_search_tree<Final, string> &tree_housing) {
+void add_sub_menu(std::string user_input, Binary_Search_Tree<Node_Struct, string> &tree_housing) {
     int choice = 0;
     do {
         std::cout
@@ -26,7 +26,8 @@ void add_sub_menu(std::string user_input, binary_search_tree<Final, string> &tre
 }
 
 void
-change_sub_menu(std::string &user_input, binary_search_tree<Final, string> &tree_housing, unsigned int choice = 0) {
+change_sub_menu(std::string &user_input, Binary_Search_Tree<Node_Struct, string> &tree_housing,
+                unsigned int choice = 0) {
     do {
         std::cout
                 << BLUE_BOLD
@@ -45,7 +46,8 @@ change_sub_menu(std::string &user_input, binary_search_tree<Final, string> &tree
     } while (choice != 2);
 }
 
-void delete_sub_menu(const std::string &user_input, binary_search_tree<Final, string> &tree, unsigned choice = 0) {
+void
+delete_sub_menu(const std::string &user_input, Binary_Search_Tree<Node_Struct, string> &tree, unsigned choice = 0) {
     do {
         std::cout
                 << BLUE_BOLD
@@ -67,8 +69,8 @@ void delete_sub_menu(const std::string &user_input, binary_search_tree<Final, st
     } while (choice != 2);
 }
 
-void menuSubSearch(Node<Final, string> *tree_pointer, std::string to_search, std::string user_input,
-                   binary_search_tree<Final, string> &tree_housing) {
+void menuSubSearch(Node<Node_Struct, string> *tree_pointer, std::string to_search, std::string user_input,
+                   Binary_Search_Tree<Node_Struct, string> &tree_housing) {
     auto choice = 0;
     do {
         std::cout
@@ -104,8 +106,8 @@ void menuSubSearch(Node<Final, string> *tree_pointer, std::string to_search, std
 
 }
 
-void sort_sub_menu(const std::string &user_input, vector<Final> &vector_housing,
-                   binary_search_tree<Final, string> &tree_housing) {
+void sort_sub_menu(const std::string &user_input, vector<Node_Struct> &vector_housing,
+                   Binary_Search_Tree<Node_Struct, string> &tree_housing) {
     auto choice = 0;
     std::cout
             << BLUE_BOLD
@@ -146,8 +148,8 @@ void sort_sub_menu(const std::string &user_input, vector<Final> &vector_housing,
     }
 }
 
-void pictures_sort_sub_menu(const std::string &user_input, vector<Final> &vector_housing,
-                            binary_search_tree<Final, string> &tree_housing) {
+void pictures_sort_sub_menu(const std::string &user_input, vector<Node_Struct> &vector_housing,
+                            Binary_Search_Tree<Node_Struct, string> &tree_housing) {
     auto choice = 0;
     do {
         std::cout
@@ -200,9 +202,9 @@ void pictures_sort_sub_menu(const std::string &user_input, vector<Final> &vector
     } while (choice != 6);
 }
 
-void pictures_search_sub_menu(const std::string &user_input, Node<Final, string> *tree_pointer,
-                              binary_search_tree<Final, string> &tree_housing) {
-    auto choice = 0;
+void pictures_search_sub_menu(const std::string &user_input, Node<Node_Struct, string> *tree_pointer,
+                              Binary_Search_Tree<Node_Struct, string> &tree_housing) {
+    unsigned int choice{};
     std::string field;
     std::cout
             << SEARCH_SUB_MENU_TITLE
@@ -223,29 +225,52 @@ void pictures_search_sub_menu(const std::string &user_input, Node<Final, string>
     do {
         switch (choice) {
             case 1:
-                //std::cin.ignore();
+                std::cout
+                        << "Enter Year: " << std::endl
+                        << GREEN
+                        << "> "
+                        << CLEAR;
+                std::cin.ignore();
                 std::getline(std::cin, field);
                 menuSubSearch(tree_pointer, "Year", field, tree_housing);
-                std::cout << "Please input year you want to search:" << std::endl;
                 break;
             case 2:
+                std::cout
+                        << "Enter Name: " << std::endl
+                        << GREEN
+                        << "> "
+                        << CLEAR;
                 std::cin.ignore();
                 std::getline(std::cin, field);
                 menuSubSearch(tree_pointer, "Name", field, tree_housing);
                 enter_program();
                 break;
             case 3:
-                std::cout << "Please input year you want to search:" << std::endl;
+                std::cout
+                        << "Enter Nomination: " << std::endl
+                        << GREEN
+                        << "> "
+                        << CLEAR;
                 std::cin.ignore();
                 getline(std::cin, field);
                 menuSubSearch(tree_pointer, "Nominations", field, tree_housing);
                 break;
             case 4:
+                std::cout
+                        << "Enter Genre: " << std::endl
+                        << GREEN
+                        << "> "
+                        << CLEAR;
                 std::cin.ignore();
                 std::getline(std::cin, field);
                 menuSubSearch(tree_pointer, "Genre", field, tree_housing);
                 break;
             case 5:
+                std::cout
+                        << "Enter Release Month: " << std::endl
+                        << GREEN
+                        << "> "
+                        << CLEAR;
                 std::cin.ignore();
                 std::getline(std::cin, field);
                 menuSubSearch(tree_pointer, "Release", field, tree_housing);
@@ -260,8 +285,8 @@ void pictures_search_sub_menu(const std::string &user_input, Node<Final, string>
     } while (choice != 6);
 }
 
-void search_sub_menu(const std::string &user_input, Node<Final, std::string> *tree_pointer,
-                     binary_search_tree<Final, std::string> &tree_housing) {
+void search_sub_menu(const std::string &user_input, Node<Node_Struct, std::string> *tree_pointer,
+                     Binary_Search_Tree<Node_Struct, std::string> &tree_housing) {
     auto choice = 0;
     std::string temporary_string_housing;
     std::cout
@@ -308,8 +333,8 @@ void search_sub_menu(const std::string &user_input, Node<Final, std::string> *tr
     }
 }
 
-void sub_menu(std::string user_input, vector<Final> &vector_housing, std::ifstream &infile,
-              binary_search_tree<Final, std::string> &tree_housing, unsigned int choice = 0) {
+void sub_menu(std::string user_input, vector<Node_Struct> &vector_housing, std::ifstream &infile,
+              Binary_Search_Tree<Node_Struct, std::string> &tree_housing, unsigned int choice = 0) {
     auto tree_pointer = tree_housing._root();
     do {
         std::cout
@@ -379,11 +404,10 @@ void enter_program(void) {
     auto choice = 0;
     std::ifstream infile;
     std::string csv_file_name;
-    std::vector<Final> storage_vector;
-    auto *actor_actress_binary_search_tree = new binary_search_tree<Final, std::string>;
-    auto *picture_binary_search_tree = new binary_search_tree<Final, std::string>;
-    auto *nomination_binary_search_tree = new binary_search_tree<Final, std::string>;
-
+    std::vector<Node_Struct> storage_vector;
+    auto *actor_actress_binary_search_tree = new Binary_Search_Tree<Node_Struct, std::string>;
+    auto *picture_binary_search_tree = new Binary_Search_Tree<Node_Struct, std::string>;
+    auto *nomination_binary_search_tree = new Binary_Search_Tree<Node_Struct, std::string>;
     do {
         std::cout
                 << MAIN_MENU_TITLE

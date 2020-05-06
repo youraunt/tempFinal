@@ -68,29 +68,29 @@ static const char SEARCH_SUB_MENU_TITLE[] =
     /// @brief winds down stack
     exit(EXIT_FAILURE);
 }
-void add_entry(std::string &user_input, binary_search_tree<Final, string> &tree_housing);
+void add_entry(std::string &user_input, Binary_Search_Tree<Node_Struct, string> &tree_housing);
 
-void delete_entry(binary_search_tree<Final, string> &tree);
+void delete_entry(Binary_Search_Tree<Node_Struct, string> &tree);
 
-void modify_entry(std::string &user_input, binary_search_tree<Final, string> &tree_housing, int choice);
+void modify_entry(std::string &user_input, Binary_Search_Tree<Node_Struct, string> &tree_housing, int choice);
 
 void
-partialSearchRecord(std::string &user_input, std::string &to_search, Node<Final, std::string> *tree_pointer,
-                    binary_search_tree<Final, std::string> &tree_housing);
+partialSearchRecord(std::string &user_input, std::string &to_search, Node<Node_Struct, std::string> *tree_pointer,
+                    Binary_Search_Tree<Node_Struct, std::string> &tree_housing);
 
-void exactSearchRecord(std::string &user_input, std::string &to_search, Node<Final, string> *tree_pointer,
-                       binary_search_tree<Final, string> &tree_housing);
+void exactSearchRecord(std::string &user_input, std::string &to_search, Node<Node_Struct, string> *tree_pointer,
+                       Binary_Search_Tree<Node_Struct, string> &tree_housing);
 
-void sort(const std::string& to_sort, vector<Final> &vector_housing, int lhs, int rhs);
+void sort(const std::string& to_sort, vector<Node_Struct> &vector_housing, int lhs, int rhs);
 
-void merge(const std::string &to_merge, vector<Final> &vector_housing, int lhs, int middle,
+void merge(const std::string &to_merge, vector<Node_Struct> &vector_housing, int lhs, int middle,
            int rhs);
 
 void
-write_to_file(const std::string &user_input, Node<Final, string> *node, binary_search_tree<Final, string> &tree_housing);
+write_to_file(const std::string &user_input, Node<Node_Struct, string> *node, Binary_Search_Tree<Node_Struct, string> &tree_housing);
 
-void to_file(std::ofstream &outfile, Node<Final, string> *node, binary_search_tree<Final, string> &tree_housing);
+void to_file(std::ofstream &outfile, Node<Node_Struct, string> *node, Binary_Search_Tree<Node_Struct, string> &tree_housing);
 
-void vector_to_console(vector<Final> &vector_storage);
+void vector_to_console(vector<Node_Struct> &vector_storage);
 
 #endif //TEMPFINAL_FUNCTIONS_H

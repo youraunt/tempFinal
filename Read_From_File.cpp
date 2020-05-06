@@ -5,9 +5,9 @@
 #include "Read_From_File.h"
 #include "Binary_Search_Tree.hpp"
 using namespace std;
-void actor_in(std::ifstream& inFile, binary_search_tree<Final, string>& tree, vector<Final>& myVector){
+void actor_in(std::ifstream& inFile, Binary_Search_Tree<Node_Struct, string>& tree, vector<Node_Struct>& myVector){
     string s;
-    Final tempData;
+    Node_Struct tempData;
     getline(inFile,s);
     while(getline(inFile,s)){
         int size;
@@ -31,18 +31,16 @@ void actor_in(std::ifstream& inFile, binary_search_tree<Final, string>& tree, ve
             s = s.substr(size + 1);
             sub = s;
             tempData.Film = sub;
-
             tree.add_node(tempData.Name, tempData);
             myVector.push_back(tempData);
-
         }
     }
     inFile.close();
 }
-void picture_in(std::ifstream& inFile, binary_search_tree<Final, string>& picTree, vector<Final>& myVector){
+void picture_in(std::ifstream& inFile, Binary_Search_Tree<Node_Struct, string>& picTree, vector<Node_Struct>& myVector){
     inFile.open("pictures.csv");
     string s;
-    Final tempData;
+    Node_Struct tempData;
     getline(inFile,s);
     cout << "Adding Nodes...\n";
     while(getline(inFile,s)){
@@ -84,15 +82,13 @@ void picture_in(std::ifstream& inFile, binary_search_tree<Final, string>& picTre
             size = s.find(',');
             sub = s.substr(0, size);
             s = s.substr(size + 1);
-            tempData.Metacritic = atoi(sub.c_str());
+            tempData.Meta_Critic = atoi(sub.c_str());
             size = s.find(',');
             sub = s.substr(0, size);
             s = s.substr(size + 1);
             tempData.Synopsis = sub;
             picTree.add_node(tempData.Name, tempData);
             myVector.push_back(tempData);
-
-
         }
     }
     inFile.close();

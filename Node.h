@@ -14,37 +14,42 @@
 
 
 
-struct Final
+struct Node_Struct
 {
-    //Update this to your data field
-    std::string Award,Winner,Name,Film, Year;
+    std::string Award;
+    std::string Winner;
+    std::string Name;
+    std::string Film;
+    std::string Year;
     double Rating;
-    int Nominations,Duration,Metacritic;
+    int Nominations;
+    int Duration;
+    int Meta_Critic;
     std::string Genre1,Genre2,Release,Synopsis;
 };
 
 
 //Binary Tree Node
-template <typename data_type, typename KEYTYPE>
+template <typename DATATYPE, typename KEYTYPE>
 class Node {
 private:
     std::string key; //This should be the datatype of your key...sorted field in tree
-    data_type data;
-    Node<data_type, KEYTYPE> * left;
-    Node<data_type, KEYTYPE> * right;
-    Node<data_type, KEYTYPE> * parent;
+    DATATYPE data;
+    Node<DATATYPE, KEYTYPE> * left;
+    Node<DATATYPE, KEYTYPE> * right;
+    Node<DATATYPE, KEYTYPE> * parent;
 public:
     Node() {left=nullptr; right=nullptr; parent = nullptr;};
     void setKey(KEYTYPE aKey) { key = aKey; };
-    void setData(data_type aData) { data = aData; }
-    void setLeft(Node<data_type, KEYTYPE> * aLeft) { left = aLeft; };
-    void setRight(Node<data_type, KEYTYPE> * aRight) { right = aRight; };
-    void setParent(Node<data_type, KEYTYPE> * aParent) { parent = aParent; };
+    void setData(DATATYPE aData) { data = aData; }
+    void setLeft(Node<DATATYPE, KEYTYPE> * aLeft) { left = aLeft; };
+    void setRight(Node<DATATYPE, KEYTYPE> * aRight) { right = aRight; };
+    void setParent(Node<DATATYPE, KEYTYPE> * aParent) { parent = aParent; };
     KEYTYPE Key() { return key; };
-    data_type Data() { return data; }
-    Node<data_type, KEYTYPE> * leaf_left() { return left; };
-    Node<data_type, KEYTYPE> * leaf_right() { return right; };
-    Node<data_type, KEYTYPE> * Parent() { return parent; };
+    DATATYPE Data() { return data; }
+    Node<DATATYPE, KEYTYPE> * leaf_left() { return left; };
+    Node<DATATYPE, KEYTYPE> * leaf_right() { return right; };
+    Node<DATATYPE, KEYTYPE> * Parent() { return parent; };
 };
 
 #endif //TEMPFINAL_NODE_H

@@ -18,48 +18,49 @@ but do NOT compile it (or add it to the project)*/
 #include "Binary_Search_Tree.h"
 
 // Constructor
-template<typename data_type, typename key_type>
-binary_search_tree<data_type, key_type>::binary_search_tree() {
+template<typename DATATYPE, typename KEYTYPE>
+Binary_Search_Tree<DATATYPE, KEYTYPE>::Binary_Search_Tree() {
     root = nullptr;
 }
 
 // Destructor
-template<typename data_type, typename key_type>
-binary_search_tree<data_type, key_type>::~binary_search_tree() {
-    if (root != nullptr)
-        free_node(root);
+template<typename DATATYPE, typename KEYTYPE>
+Binary_Search_Tree<DATATYPE, KEYTYPE>::~Binary_Search_Tree() {
+    if (root != nullptr) make_empty(root);
 }
 
-
-template<typename data_type, typename key_type>
-void binary_search_tree<data_type, key_type>::free_node(Node<data_type, key_type> *leaf) {
-    if (root == nullptr) {
-        return;
-    }
-    free_node(leaf->leaf_left());
-    free_node(leaf->leaf_right());
-    delete_node(leaf);
-
+/// @brief
+/// @tparam DATATYPE
+/// @tparam KEYTYPE
+/// @param leaf
+/// @return
+/// @changed return type
+template<typename DATATYPE, typename KEYTYPE>
+Node_Struct *Binary_Search_Tree<DATATYPE, KEYTYPE>::make_empty(Node<DATATYPE, KEYTYPE> *leaf) {
+    if (root == nullptr) { return nullptr; }
+    make_empty(leaf->leaf_left());
+    make_empty(leaf->leaf_right());
+    remove(leaf);
+    return nullptr;
 }
 
-template<typename data_type, typename key_type>
-void binary_search_tree<data_type, key_type>::add_node(key_type key, data_type &data) {
+template<typename DATATYPE, typename KEYTYPE>
+void Binary_Search_Tree<DATATYPE, KEYTYPE>::add_node(KEYTYPE key, DATATYPE &data) {
     if (_root() == nullptr) {
-        auto *node_pointer = new Node<data_type, key_type>;
+        auto *node_pointer = new Node<DATATYPE, KEYTYPE>;
         node_pointer->setKey(key);
         node_pointer->setData(data);
         root = node_pointer;
         root->setParent(root);
-
     } else
         insert_node(key, root, data); //Recursive
 }
 
-template<typename data_type, typename key_type>
-void binary_search_tree<data_type, key_type>::insert_node
-        (key_type key, Node<data_type, key_type> *leaf, data_type &data) {
+template<typename DATATYPE, typename KEYTYPE>
+void Binary_Search_Tree<DATATYPE, KEYTYPE>::insert_node
+        (KEYTYPE key, Node<DATATYPE, KEYTYPE> *leaf, DATATYPE &data) {
     if (root == nullptr) {
-        auto *newNodePtr = new Node<data_type, key_type>;
+        auto *newNodePtr = new Node<DATATYPE, KEYTYPE>;
         newNodePtr->setKey(key);
         newNodePtr->setData(data);
         root = newNodePtr;
@@ -69,7 +70,7 @@ void binary_search_tree<data_type, key_type>::insert_node
             if (leaf->leaf_left() != nullptr)
                 insert_node(key, leaf->leaf_left(), data);
             else {
-                auto *newNodePtr = new Node<data_type, key_type>;
+                auto *newNodePtr = new Node<DATATYPE, KEYTYPE>;
                 newNodePtr->setKey(key);
                 newNodePtr->setData(data);
                 leaf->setLeft(newNodePtr);
@@ -78,7 +79,7 @@ void binary_search_tree<data_type, key_type>::insert_node
             if (leaf->leaf_right() != nullptr)
                 insert_node(key, leaf->leaf_right(), data);
             else {
-                auto *newNodePtr = new Node<data_type, key_type>;
+                auto *newNodePtr = new Node<DATATYPE, KEYTYPE>;
                 newNodePtr->setKey(key);
                 newNodePtr->setData(data);
                 leaf->setRight(newNodePtr);
@@ -87,15 +88,15 @@ void binary_search_tree<data_type, key_type>::insert_node
     }
 }
 
-template<typename data_type, typename key_type>
-Node<data_type, key_type> *binary_search_tree<data_type, key_type>::find(key_type key) {
+template<typename DATATYPE, typename KEYTYPE>
+Node<DATATYPE, KEYTYPE> *Binary_Search_Tree<DATATYPE, KEYTYPE>::find(KEYTYPE key) {
     return find_node(key, root);
 }
 
 // Find a node
-template<typename data_type, typename key_type>
-Node<data_type, key_type> *
-binary_search_tree<data_type, key_type>::find_node(key_type key, Node<data_type, key_type> *node) {
+template<typename DATATYPE, typename KEYTYPE>
+Node<DATATYPE, KEYTYPE> *
+Binary_Search_Tree<DATATYPE, KEYTYPE>::find_node(KEYTYPE key, Node<DATATYPE, KEYTYPE> *node) {
     if (node == nullptr)
         return nullptr;
     else if (node->Key() == key)
@@ -111,107 +112,107 @@ binary_search_tree<data_type, key_type>::find_node(key_type key, Node<data_type,
 }
 
 template<typename DATATYPE, typename KEYTYPE>
-void binary_search_tree<DATATYPE, KEYTYPE>::in_order() {
+void Binary_Search_Tree<DATATYPE, KEYTYPE>::in_order() {
     in_order(root);
 }
 
 template<typename DATATYPE, typename KEYTYPE>
-void binary_search_tree<DATATYPE, KEYTYPE>::in_order(Node<DATATYPE, KEYTYPE> *node) {
+void Binary_Search_Tree<DATATYPE, KEYTYPE>::in_order(Node<DATATYPE, KEYTYPE> *node) {
     if (node == nullptr)
         return;
     in_order(node->leaf_left());
-    to_console(cout, node->Data());
+    display(std::cout, node->Data());
     in_order(node->leaf_right());
 }
 
 template<typename DATATYPE, typename KEYTYPE>
-void binary_search_tree<DATATYPE, KEYTYPE>::to_console(ostream &out, const DATATYPE &d) {
-    if (d.Synopsis == "")
-        out
+void Binary_Search_Tree<DATATYPE, KEYTYPE>::display(ostream &output, const DATATYPE &data) {
+    if (data.Synopsis == "")
+        output
                 << std::endl
-                << d.Year << std::endl
-                << d.Award << std::endl
-                << d.Winner << std::endl
-                << d.Name << std::endl
-                << d.Film << std::endl;
+                << data.Year << std::endl
+                << data.Award << std::endl
+                << data.Winner << std::endl
+                << data.Name << std::endl
+                << data.Film << std::endl;
     else {
-        out
+        output
                 << std::endl
-                << d.Name << std::endl
-                << d.Year << std::endl
-                << d.Nominations << std::endl
-                << d.Rating << std::endl
-                << d.Duration << std::endl
-                << d.Genre1 << std::endl
-                << d.Genre2 << std::endl
-                << d.Release << std::endl
-                << d.Metacritic << std::endl
-                << d.Synopsis
+                << data.Name << std::endl
+                << data.Year << std::endl
+                << data.Nominations << std::endl
+                << data.Rating << std::endl
+                << data.Duration << std::endl
+                << data.Genre1 << std::endl
+                << data.Genre2 << std::endl
+                << data.Release << std::endl
+                << data.Meta_Critic << std::endl
+                << data.Synopsis
                 << endl;
     }
 }
 
-template<typename data_type, typename key_type>
-void binary_search_tree<data_type, key_type>::delete_node(key_type k) {
-    initialize_root(delete_node(_root(), k));
+template<typename DATATYPE, typename KEYTYPE>
+void Binary_Search_Tree<DATATYPE, KEYTYPE>::remove(KEYTYPE key) {
+    initialize_root(remove_node(_root(), key));
 }
 
-//delete_node (Private)
-template<typename data_type, typename key_type>
-Node<data_type, key_type> *
-binary_search_tree<data_type, key_type>
-::delete_node(Node<data_type, key_type> *_root, key_type key) {
+//remove (Private)
+template<typename DATATYPE, typename KEYTYPE>
+Node<DATATYPE, KEYTYPE> *
+Binary_Search_Tree<DATATYPE, KEYTYPE>
+::remove_node(Node<DATATYPE, KEYTYPE> *_root, KEYTYPE key) {
 
-    /* Given a binary search tree and a key_type, this function deletes the key_type
+    /* Given a binary search tree and a KEYTYPE, this function deletes the KEYTYPE
     and returns the new root */
 
     // base case
     if (_root == nullptr) return _root;
 
-    // If the key_type to be deleted is smaller than the _root's key_type,
+    // If the KEYTYPE to be deleted is smaller than the _root's KEYTYPE,
     // then it lies in left subtree
     if (key < _root->Key())
-        _root->setLeft(delete_node(_root->leaf_left(), key));
+        _root->setLeft(remove_node(_root->leaf_left(), key));
 
-        // If the key_type to be deleted is greater than the root's key_type,
+        // If the KEYTYPE to be deleted is greater than the root's KEYTYPE,
         // then it lies in right subtree
     else if (key > _root->Key())
-        _root->setRight(delete_node(_root->leaf_right(), key));
+        _root->setRight(remove_node(_root->leaf_right(), key));
 
-        // if key_type is same as root's key_type, then This is the node
+        // if KEYTYPE is same as root's KEYTYPE, then This is the node
         // to be deleted
     else {
         // node with only one child or no child
         if (_root->leaf_left() == nullptr) {
-            Node<data_type, key_type> *temp = _root->leaf_right();
+            Node<DATATYPE, KEYTYPE> *temp = _root->leaf_right();
             delete _root;
             return temp;
         } else if (_root->leaf_right() == nullptr) {
-            Node<data_type, key_type> *temp = _root->leaf_left();
+            Node<DATATYPE, KEYTYPE> *temp = _root->leaf_left();
             delete _root;
             return temp;
         }
 
         // node with two children: Get the inorder successor (smallest
         // in the right subtree)
-        Node<data_type, key_type> *temp = find_min(_root->leaf_right());
+        Node<DATATYPE, KEYTYPE> *temp = find_min(_root->leaf_right());
 
         // Copy the inorder successor's content to this node
         _root->setKey(temp->Key());
         _root->setData(temp->Data());
 
         // Delete the inorder successor
-        _root->setRight(delete_node(_root->leaf_right(), temp->Key()));
+        _root->setRight(remove_node(_root->leaf_right(), temp->Key()));
     }
     return _root;
 }
 
 
 // Find the node with find_min key
-// Traverse the left sub-binary_search_tree recursively
-// till left sub-binary_search_tree is empty to get find_min
+// Traverse the left sub-Binary_Search_Tree recursively
+// till left sub-Binary_Search_Tree is empty to get find_min
 template<typename data, typename key>
-Node<data, key> *binary_search_tree<data, key>::find_min(Node<data, key> *node) {
+Node<data, key> *Binary_Search_Tree<data, key>::find_min(Node<data, key> *node) {
     Node<data, key> *current = node;
 
     /* loop down to find the leftmost leaf */
@@ -222,10 +223,10 @@ Node<data, key> *binary_search_tree<data, key>::find_min(Node<data, key> *node) 
 }
 
 // Find the node with find_max key
-// Traverse the right sub-binary_search_tree recursively
-// till right sub-binary_search_tree is empty to get find_max
+// Traverse the right sub-Binary_Search_Tree recursively
+// till right sub-Binary_Search_Tree is empty to get find_max
 template<typename data, typename key>
-Node<data, key> *binary_search_tree<data, key>
+Node<data, key> *Binary_Search_Tree<data, key>
 ::find_max(Node<data, key> *node) {
     auto _node = node;
     if (node == nullptr)
