@@ -4,7 +4,6 @@
 
 #include "Menus.h"
 
-
 void add_sub_menu(std::string user_input, Binary_Search_Tree<Node_Struct, std::string> &tree_housing) {
     std::cout
             << BLUE_BOLD
@@ -19,6 +18,9 @@ void add_sub_menu(std::string user_input, Binary_Search_Tree<Node_Struct, std::s
     } else if (choice == 2) { enter_program(); }
 }
 
+/// @brief
+/// @param user_input
+/// @param tree_housing
 void
 change_sub_menu(std::string &user_input, Binary_Search_Tree<Node_Struct, std::string> &tree_housing) {
     std::cout
@@ -31,12 +33,12 @@ change_sub_menu(std::string &user_input, Binary_Search_Tree<Node_Struct, std::st
     auto choice = get_menu_choice(2);
     if (choice == 1) {
         modify_entry(user_input, tree_housing);
-    } else if (choice == 2) {
-        enter_program();
-    }
-
+    } else if (choice == 2) { enter_program(); }
 }
 
+/// @brief
+/// @param user_input
+/// @param tree
 void
 delete_sub_menu(const std::string &user_input, Binary_Search_Tree<Node_Struct, std::string> &tree) {
     std::cout << BLUE_BOLD << "Current File: " << CLEAR
@@ -46,11 +48,14 @@ delete_sub_menu(const std::string &user_input, Binary_Search_Tree<Node_Struct, s
     auto choice = get_menu_choice(2);
     if (choice == 1) {
         delete_entry(tree);
-    } else if (choice == 2) {
-        enter_program();
-    }
+    } else if (choice == 2) { enter_program(); }
 }
 
+/// @brief
+/// @param tree_pointer
+/// @param to_search
+/// @param user_input
+/// @param tree_housing
 void search_sub_menu_(Node<Node_Struct, std::string> *tree_pointer, std::string to_search, std::string user_input,
                       Binary_Search_Tree<Node_Struct, std::string> &tree_housing) {
     precise_or_partial_menu();
@@ -76,9 +81,12 @@ void search_sub_menu_(Node<Node_Struct, std::string> *tree_pointer, std::string 
 
 }
 
-void sort_sub_menu(const std::string &user_input, std::vector <Node_Struct> &vector_housing,
+/// @brief
+/// @param user_input
+/// @param vector_housing
+/// @param tree_housing
+void sort_sub_menu(const std::string &user_input, std::vector<Node_Struct> &vector_housing,
                    Binary_Search_Tree<Node_Struct, std::string> &tree_housing) {
-    std::cout << BLUE_BOLD << "Current File: " << CLEAR << user_input << std::endl;
     sort_menu_display();
     auto choice = get_menu_choice(4);
     switch (choice) {
@@ -104,10 +112,14 @@ void sort_sub_menu(const std::string &user_input, std::vector <Node_Struct> &vec
     }
 }
 
-void pictures_sort_sub_menu(const std::string &user_input, std::vector <Node_Struct> &vector_housing,
+/// @brief
+/// @param user_input
+/// @param vector_housing
+/// @param tree_housing
+void
+pictures_sort_sub_menu(const std::string &user_input, std::vector<Node_Struct> &vector_housing,
                             Binary_Search_Tree<Node_Struct, std::string> &tree_housing) {
 
-    std::cout << BLUE_BOLD << "Current File: " << CLEAR << user_input << std::endl;
     sort_pictures_sub_display();
     auto choice = get_menu_choice(7);
     switch (choice) {
@@ -147,6 +159,10 @@ void pictures_sort_sub_menu(const std::string &user_input, std::vector <Node_Str
 
 }
 
+/// @brief
+/// @param user_input
+/// @param tree_pointer
+/// @param tree_housing
 void pictures_search_sub_menu(const std::string &user_input, Node<Node_Struct, std::string> *tree_pointer,
                               Binary_Search_Tree<Node_Struct, std::string> &tree_housing) {
     std::string string_housing;
@@ -196,6 +212,10 @@ void pictures_search_sub_menu(const std::string &user_input, Node<Node_Struct, s
     }
 }
 
+/// @brief
+/// @param user_input
+/// @param tree_pointer
+/// @param tree_housing
 void search_sub_menu(const std::string &user_input, Node<Node_Struct, std::string> *tree_pointer,
                      Binary_Search_Tree<Node_Struct, std::string> &tree_housing) {
     std::string temporary_string_housing;
@@ -231,7 +251,12 @@ void search_sub_menu(const std::string &user_input, Node<Node_Struct, std::strin
     }
 }
 
-void sub_menu(std::string user_input, std::vector <Node_Struct> &vector_housing, std::ifstream &infile,
+/// @brief
+/// @param user_input
+/// @param vector_housing
+/// @param infile
+/// @param tree_housing
+void sub_menu(std::string user_input, std::vector<Node_Struct> &vector_housing, std::ifstream &infile,
               Binary_Search_Tree<Node_Struct, std::string> &tree_housing) {
     auto tree_pointer = tree_housing._root();
     std::cout << BLUE_BOLD << "Current File: " << CLEAR << user_input << std::endl;
@@ -281,7 +306,7 @@ void sub_menu(std::string user_input, std::vector <Node_Struct> &vector_housing,
 
 }
 
-
+/// @brief
 void enter_program() {
     std::ifstream infile;
     std::string csv_file_name;
@@ -301,7 +326,7 @@ void enter_program() {
             break;
         case 2:
             csv_file_name = R"(pictures.csv)";
-            picture_in(infile, *picture_binary_search_tree, storage_vector);
+            picture_in(infile, storage_vector, *picture_binary_search_tree);
             sub_menu(csv_file_name, storage_vector, infile, *picture_binary_search_tree);
             break;
         case 3:

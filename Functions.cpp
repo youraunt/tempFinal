@@ -92,7 +92,9 @@ void sub_string_search(std::string &user_input, std::string &to_search, Node<Nod
     sub_string_search(user_input, to_search, tree_pointer->leaf_right(), tree_housing);
 
 }
-
+/// @brief
+/// @param user_input
+/// @param tree_housing
 void add_entry(std::string &user_input, Binary_Search_Tree<Node_Struct, std::string> &tree_housing) {
     Node_Struct newRecord;
     if (user_input != "pictures.csv") {
@@ -248,9 +250,14 @@ void modify_entry(std::string &user_input, Binary_Search_Tree<Node_Struct, std::
         }
     }
 }
-
-void merge(const std::string &to_merge, std::vector<Node_Struct> &vector_housing, int lhs, int middle,
-           int rhs) {
+/// @brief
+/// @param to_merge
+/// @param vector_housing
+/// @param lhs
+/// @param middle
+/// @param rhs
+void merger(const std::string &to_merge, std::vector<Node_Struct> &vector_housing, int lhs, int middle,
+            int rhs) {
     auto i = 0;
     auto j = 0;
     auto k = 0;
@@ -330,16 +337,23 @@ void merge(const std::string &to_merge, std::vector<Node_Struct> &vector_housing
     temp_vector_housing.clear();
     temp_vector_housing_2.clear();
 }
-
+/// @brief
+/// @param to_sort
+/// @param vector_housing
+/// @param lhs
+/// @param rhs
 void sort(const std::string &to_sort, std::vector<Node_Struct> &vector_housing, int lhs, int rhs) {
     if (lhs < rhs) {
         auto m = lhs + (rhs - lhs) / 2;
         sort(to_sort, vector_housing, lhs, m);
         sort(to_sort, vector_housing, m + 1, rhs);
-        merge(to_sort, vector_housing, lhs, m, rhs);
+        merger(to_sort, vector_housing, lhs, m, rhs);
     } else { return; }
 }
-
+/// @brief
+/// @param user_input
+/// @param node
+/// @param tree_housing
 void write_to_file(const std::string &user_input, Node<Node_Struct, std::string> *node,
                    Binary_Search_Tree<Node_Struct, std::string> &tree_housing) {
     if (node == nullptr) { return; }
@@ -347,7 +361,10 @@ void write_to_file(const std::string &user_input, Node<Node_Struct, std::string>
     to_file(output, node, tree_housing);
     output.close();
 }
-
+/// @brief
+/// @param outfile
+/// @param node
+/// @param tree_housing
 void to_file(std::ofstream &outfile, Node<Node_Struct, std::string> *node,
              Binary_Search_Tree<Node_Struct, std::string> &tree_housing) {
     if (node == nullptr) { return; }
@@ -355,7 +372,8 @@ void to_file(std::ofstream &outfile, Node<Node_Struct, std::string> *node,
     tree_housing.display(outfile, node->Data());
     to_file(outfile, node->leaf_right(), tree_housing);
 }
-
+/// @brief
+/// @param vector_storage
 void vector_to_console(std::vector<Node_Struct> &vector_storage) {
     for (const auto &iterator : vector_storage) {
         (iterator.Genre2.empty() ?

@@ -21,23 +21,41 @@ void actor_in(std::ifstream &infile, std::vector<Node_Struct> &vector_housing,
         std::string sub_string;
         {
             temp_size = string_housing.find(',');
+
             sub_string = string_housing.substr(0, temp_size);
+
             string_housing = string_housing.substr(temp_size + 1);
+
             node_struct.Year = sub_string;
+
             temp_size = string_housing.find(',');
+
             sub_string = string_housing.substr(0, temp_size);
+
             string_housing = string_housing.substr(temp_size + 1);
+
             node_struct.Award = sub_string;
+
             temp_size = string_housing.find(',');
+
             sub_string = string_housing.substr(0, temp_size);
+
             string_housing = string_housing.substr(temp_size + 1);
+
             node_struct.Winner = sub_string;
+
             temp_size = string_housing.find(',');
+
             sub_string = string_housing.substr(0, temp_size);
+
             node_struct.Name = sub_string;
+
             string_housing = string_housing.substr(temp_size + 1);
+
             sub_string = string_housing;
+
             node_struct.Film = sub_string;
+
             tree_housing.add_node(node_struct.Name, node_struct);
             vector_housing.push_back(node_struct);
         }
@@ -45,8 +63,8 @@ void actor_in(std::ifstream &infile, std::vector<Node_Struct> &vector_housing,
     infile.close();
 }
 
-void picture_in(std::ifstream &infile, Binary_Search_Tree<Node_Struct, std::string> &tree_housing,
-                std::vector<Node_Struct> &vector_housing) {
+void picture_in(std::ifstream &infile, std::vector<Node_Struct> &vector_housing,
+                Binary_Search_Tree<Node_Struct, std::string> &tree_housing) {
 //    static bool called = false;
 //    if(called){
 //        return;
@@ -61,45 +79,85 @@ void picture_in(std::ifstream &infile, Binary_Search_Tree<Node_Struct, std::stri
         std::string sub_string;
         {
             temp_size = string_housing.find(',');
+
             sub_string = string_housing.substr(0, temp_size);
+
             string_housing = string_housing.substr(temp_size + 1);
+
             node_struct.Name = sub_string;
+
             temp_size = string_housing.find(',');
+
             sub_string = string_housing.substr(0, temp_size);
+
             string_housing = string_housing.substr(temp_size + 1);
+
             node_struct.Year = sub_string;
+
             temp_size = string_housing.find(',');
+
             sub_string = string_housing.substr(0, temp_size);
+
             string_housing = string_housing.substr(temp_size + 1);
+
             node_struct.Nominations = atoi(sub_string.c_str());
+
             temp_size = string_housing.find(',');
+
             sub_string = string_housing.substr(0, temp_size);
-            node_struct.Rating = std::stof(sub_string.c_str());
+
+            node_struct.Rating = std::stof(sub_string);
+
             string_housing = string_housing.substr(temp_size + 1);
+
             temp_size = string_housing.find(',');
+
             sub_string = string_housing.substr(0, temp_size);
+
             string_housing = string_housing.substr(temp_size + 1);
-            node_struct.Duration = std::stof(sub_string.c_str());
+
+            node_struct.Duration = std::stof(sub_string);
+
             temp_size = string_housing.find(',');
+
             sub_string = string_housing.substr(0, temp_size);
+
             string_housing = string_housing.substr(temp_size + 1);
+
             node_struct.Genre1 = sub_string;
+
             temp_size = string_housing.find(',');
+
             sub_string = string_housing.substr(0, temp_size);
+
             string_housing = string_housing.substr(temp_size + 1);
+
             node_struct.Genre2 = sub_string;
+
             temp_size = string_housing.find(',');
+
             sub_string = string_housing.substr(0, temp_size);
+
             string_housing = string_housing.substr(temp_size + 1);
+
             node_struct.Release = sub_string;
+
             temp_size = string_housing.find(',');
+
             sub_string = string_housing.substr(0, temp_size);
+
             string_housing = string_housing.substr(temp_size + 1);
+
             node_struct.Meta_Critic = atoi(sub_string.c_str());
+
             temp_size = string_housing.find(',');
+
             sub_string = string_housing.substr(0, temp_size);
+
             string_housing = string_housing.substr(temp_size + 1);
+
             node_struct.Synopsis = sub_string;
+
             tree_housing.add_node(node_struct.Name, node_struct);
             vector_housing.push_back(node_struct);
         }
