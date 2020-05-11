@@ -126,7 +126,7 @@ void Binary_Search_Tree<DATATYPE, KEYTYPE>::in_order(Node<DATATYPE, KEYTYPE> *no
 }
 
 template<typename DATATYPE, typename KEYTYPE>
-void Binary_Search_Tree<DATATYPE, KEYTYPE>::display(ostream &output, const DATATYPE &data) {
+void Binary_Search_Tree<DATATYPE, KEYTYPE>::display(std::ostream &output, const DATATYPE &data) {
     if (data.Synopsis == "")
         output
                 << std::endl
@@ -147,8 +147,7 @@ void Binary_Search_Tree<DATATYPE, KEYTYPE>::display(ostream &output, const DATAT
                 << data.Genre2 << std::endl
                 << data.Release << std::endl
                 << data.Meta_Critic << std::endl
-                << data.Synopsis
-                << endl;
+                << data.Synopsis << std::endl;
     }
 }
 

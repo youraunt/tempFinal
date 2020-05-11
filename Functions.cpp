@@ -3,16 +3,15 @@
 //
 #include "Functions.h"
 #include "Menus.h"
-#include <string>
 
-using namespace std;
+
 /// @brief Searches for exact matches
 /// @param user_input
 /// @param to_search
 /// @param tree_pointer
 /// @param tree_housing
-void precise_search(std::string &user_input, std::string &to_search, Node<Node_Struct, string> *tree_pointer,
-                    Binary_Search_Tree<Node_Struct, string> &tree_housing) {
+void precise_search(std::string &user_input, std::string &to_search, Node<Node_Struct, std::string> *tree_pointer,
+                    Binary_Search_Tree<Node_Struct, std::string> &tree_housing) {
     if (tree_pointer == nullptr) {
         return;
     }
@@ -30,11 +29,11 @@ void precise_search(std::string &user_input, std::string &to_search, Node<Node_S
             tree_housing.display(std::cout, tree_pointer->Data());
         }
     } else if (to_search == "Nominations") {
-        if (to_string(tree_pointer->Data().Nominations) == (user_input)) {
+        if (std::to_string(tree_pointer->Data().Nominations) == (user_input)) {
             tree_housing.display(std::cout, tree_pointer->Data());
         }
     } else if (to_search == "Rating") {
-        if (to_string(tree_pointer->Data().Rating) == (user_input)) {
+        if (std::to_string(tree_pointer->Data().Rating) == (user_input)) {
             tree_housing.display(std::cout, tree_pointer->Data());
         }
     } else if (to_search == "Genre") {
@@ -43,12 +42,17 @@ void precise_search(std::string &user_input, std::string &to_search, Node<Node_S
         }
     } else if (to_search == "Release") {
         if (tree_pointer->Data().Release == user_input) {
-            tree_housing.display(cout, tree_pointer->Data());
+            tree_housing.display(std::cout, tree_pointer->Data());
         }
     }
     precise_search(user_input, to_search, tree_pointer->leaf_right(), tree_housing);
 }
 
+/// @brief
+/// @param user_input
+/// @param to_search
+/// @param tree_pointer
+/// @param tree_housing
 void sub_string_search(std::string &user_input, std::string &to_search, Node<Node_Struct, std::string> *tree_pointer,
                        Binary_Search_Tree<Node_Struct, std::string> &tree_housing) {
     if (tree_pointer == nullptr) {
@@ -65,24 +69,24 @@ void sub_string_search(std::string &user_input, std::string &to_search, Node<Nod
         }
     } else if (to_search == "Year") {
         if (tree_pointer->Data().Year.find(user_input) != std::string::npos) {
-            tree_housing.display(cout, tree_pointer->Data());
+            tree_housing.display(std::cout, tree_pointer->Data());
         }
     } else if (to_search == "Nominations") {
-        if (to_string(tree_pointer->Data().Nominations).find(user_input) != std::string::npos) {
-            tree_housing.display(cout, tree_pointer->Data());
+        if (std::to_string(tree_pointer->Data().Nominations).find(user_input) != std::string::npos) {
+            tree_housing.display(std::cout, tree_pointer->Data());
         }
     } else if (to_search == "Rating") {
-        if (to_string(tree_pointer->Data().Rating).find(user_input) != std::string::npos) {
-            tree_housing.display(cout, tree_pointer->Data());
+        if (std::to_string(tree_pointer->Data().Rating).find(user_input) != std::string::npos) {
+            tree_housing.display(std::cout, tree_pointer->Data());
         }
     } else if (to_search == "Genre") {
         if (tree_pointer->Data().Genre1.find(user_input) != std::string::npos ||
             tree_pointer->Data().Genre2.find(user_input) != std::string::npos) {
-            tree_housing.display(cout, tree_pointer->Data());
+            tree_housing.display(std::cout, tree_pointer->Data());
         }
     } else if (to_search == "Release") {
         if (tree_pointer->Data().Release.find(user_input) != std::string::npos) {
-            tree_housing.display(cout, tree_pointer->Data());
+            tree_housing.display(std::cout, tree_pointer->Data());
         }
     }
     sub_string_search(user_input, to_search, tree_pointer->leaf_right(), tree_housing);
@@ -116,22 +120,22 @@ void add_entry(std::string &user_input, Binary_Search_Tree<Node_Struct, std::str
         std::cout << "Duration: " << std::endl;
         std::cin >> newRecord.Duration;
         std::cout << "Primary Genre: " << std::endl;
-        std::cin.ignore();
-        std::getline(std::cin, newRecord.Genre1);
+        std::getline(std::cin.ignore(), newRecord.Genre1);
         std::cout << "Secondary Genre:" << std::endl;
-        std::getline(cin, newRecord.Genre2);
+        std::getline(std::cin.ignore(), newRecord.Genre2);
         std::cout << "Release:" << std::endl;
-        std::getline(std::cin, newRecord.Release);
+        std::getline(std::cin.ignore(), newRecord.Release);
         std::cout << "Meta-critic:" << std::endl;
         std::cin >> newRecord.Meta_Critic;
         std::cout << "Synopsis:" << std::endl;
-        std::cin.ignore();
-        std::getline(std::cin, newRecord.Synopsis);
+        std::getline(std::cin.ignore(), newRecord.Synopsis);
         tree_housing.add_node(newRecord.Name, newRecord);
     }
     tree_housing.display(std::cout, newRecord);
 }
 
+/// @brief
+/// @param tree
 void delete_entry(Binary_Search_Tree<Node_Struct, std::string> &tree) {
     Node_Struct record;
     std::cout << "Enter an actor or actress to search for: " << std::endl;
@@ -145,258 +149,217 @@ void delete_entry(Binary_Search_Tree<Node_Struct, std::string> &tree) {
     }
 }
 
-void modify_entry(
-        std::string &user_input,
-        Binary_Search_Tree<Node_Struct, string> &tree_housing) {
+/// @brief
+/// @param user_input
+/// @param tree_housing
+void modify_entry(std::string &user_input, Binary_Search_Tree<Node_Struct, std::string> &tree_housing) {
     auto choice = 0;
-    Node_Struct changeRecord;
-    Node<Node_Struct, string> *treePtr;
-    string field;
+    std::string string_housing;
+    Node_Struct alter_this;
+    Node<Node_Struct, std::string> *tree_pointer;
     std::cout << "Enter an actor or actress to search for: " << std::endl;
-    std::cin.ignore();
-    std::getline(std::cin, field);
-    treePtr = tree_housing.find(field);
-    if (treePtr == nullptr) {
+    std::getline(std::cin.ignore(), string_housing);
+    tree_pointer = tree_housing.find(string_housing);
+    if (tree_pointer == nullptr) {
         std::cout << "No matches!" << std::endl;
     } else {
-        if (user_input == "pictures.csv") {
-            do {
-                modify_menu_display();
-                choice = get_menu_choice(8);
-                changeRecord = treePtr->Data();
-                switch (choice) {
-                    case 1: {
-                        cout << "Name: " << endl;
-                        cin.ignore();
-                        getline(cin, changeRecord.Name);
-                        break;
-                    }
-                    case 2: {
-                        cout << "Year: " << endl;
-                        cin >> changeRecord.Year;
-                        break;
-                    }
-                    case 3: {
-                        cout << "Nominations: " << endl;
-                        cin >> changeRecord.Nominations;
-                        break;
-                    }
-                    case 4: {
-                        cout << "Rating: " << endl;
-                        cin >> changeRecord.Rating;
-                        break;
-                    }
-                    case 5: {
-                        cout << "Length: " << endl;
-                        cin >> changeRecord.Duration;
-                        break;
-                    }
-                    case 6: {
-                        cout << "First Genre: " << endl;
-                        cin >> changeRecord.Genre1;
-                        break;
-                    }
-                    case 7: {
-                        cout << "Secondary Genre: " << endl;
-                        cin >> changeRecord.Genre2;
-                        break;
-                    }
-                    case 8:
-                        enter_program();
-                    case 0:
-                        exit_program();
-                    default: {
-                        std::cout << "Invalid Input!" << std::endl;
-                        break;
-                    }
-                }
-                treePtr->setData(changeRecord);
-                std::cout << "New record added:" << std::endl;
-                tree_housing.display(cout, changeRecord);
-            } while (choice != 7);
-        } else if (user_input == "actor-actress.csv" || user_input == "Nominations.csv") {
-            int menu{};
-            std::cout << "Record you want to change is in the database" << std::endl;
-            do {
-                std::cout << "Input 0 to change Year" << std::endl
-                          << "input 1 to change Award" << std::endl
-                          << "Input 2 to change winner" << std::endl
-                          << "Input 3 to change name" << std::endl
-                          << "Input 4 to change film" << std::endl
-                          << "input -1 if you want to exit" << std::endl;
-                cin >> menu;
-                changeRecord = treePtr->Data();
-                switch (menu) {
-                    case 0: {
-                        cout << "Input Year. For example: 2018" << endl;
-                        cin >> changeRecord.Year;
-                        break;
-                    }
-                    case 1: {
-                        cout << "Input Award." << endl;
-                        cin.ignore();
-                        getline(cin, changeRecord.Award);
-                        break;
-                    }
-                    case 2: {
-                        cout << "Input winner. 0 or 1" << endl;
-                        cin >> changeRecord.Winner;
-                        break;
-                    }
-                    case 3: {
-                        cout << "Input Name. For example: Birdman" << endl;
-                        cin.ignore();
-                        getline(cin, changeRecord.Name);
-                        break;
-                    }
-                    case 4: {
-                        cout << "Input film" << endl;
-                        cin.ignore();
-                        getline(cin, changeRecord.Film);
-                        break;
-                    }
-                    default: {
-                        break;
-                    }
-                }
-                treePtr->setData(changeRecord);
-                cout << "Your modified record is" << endl;
-                tree_housing.display(cout, changeRecord);
-            } while (menu != -1);
+        if ("pictures.csv" == user_input) {
+            modify_menu_display();
+            choice = get_menu_choice(8);
+            alter_this = tree_pointer->Data();
+            switch (choice) {
+                case 1:
+                    std::cout << "Name: " << std::endl;
+                    std::getline(std::cin.ignore(), alter_this.Name);
+                    break;
+                case 2:
+                    std::cout << "Year: " << std::endl;
+                    std::cin >> alter_this.Year;
+                    break;
+                case 3:
+                    std::cout << "Nominations(integer): " << std::endl;
+                    std::cin >> alter_this.Nominations;
+                    break;
+                case 4:
+                    std::cout << "Rating(Decimal): " << std::endl;
+                    std::cin >> alter_this.Rating;
+                    break;
+                case 5:
+                    std::cout << "Length: " << std::endl;
+                    std::cin >> alter_this.Duration;
+                    break;
+                case 6:
+                    std::cout << "First Genre: " << std::endl;
+                    std::cin >> alter_this.Genre1;
+                    break;
+                case 7:
+                    std::cout << "Secondary Genre: " << std::endl;
+                    std::cin >> alter_this.Genre2;
+                    break;
+                case 8:
+                    enter_program();
+                case 0:
+                    exit_program();
+                default:
+                    std::cout << "Invalid Input!" << std::endl;
+                    break;
+
+            }
+            tree_pointer->setData(alter_this);
+            std::cout << "New record added:" << std::endl;
+            tree_housing.display(std::cout, alter_this);
+
+        } else if ("actor-actress.csv" == user_input || "Nominations.csv" == user_input) {
+            auto menu_choice = 0;
+            modify__menu_display();
+            menu_choice = get_menu_choice(5);
+            alter_this = tree_pointer->Data();
+            switch (menu_choice) {
+                case 1:
+                    std::cout << "Year: " << std::endl;
+                    std::cin >> alter_this.Year;
+                    break;
+                case 2:
+                    std::cout << "Award: " << std::endl;
+                    std::getline(std::cin.ignore(), alter_this.Award);
+                    break;
+                case 3:
+                    std::cout << "Winner(binary): " << std::endl;
+                    std::cin >> alter_this.Winner;
+                    break;
+                case 4:
+                    std::cout << "Name: " << std::endl;
+                    std::getline(std::cin.ignore(), alter_this.Name);
+                    break;
+                case 5:
+                    std::cout << "Film:" << std::endl;
+                    std::getline(std::cin.ignore(), alter_this.Film);
+                    break;
+                case 6:
+                    exit_program();
+                default:
+                    break;
+            }
+            tree_pointer->setData(alter_this);
+            std::cout << "Modified Entry: ";
+            tree_housing.display(std::cout, alter_this);
         } else {
-            cout << "Sorry. File is not exist" << endl;
+            std::cout << "No Matches!" << std::endl;
         }
     }
 }
 
-void merge(const std::string &to_merge, vector<Node_Struct> &vector_housing, int lhs, int middle,
+void merge(const std::string &to_merge, std::vector<Node_Struct> &vector_housing, int lhs, int middle,
            int rhs) {
-    int i, j, k;
-    int n1 = middle - lhs + 1;
-    int n2 = rhs - middle;
-
-    /* create temp vector*/
-    vector<Node_Struct> first, second;
-
-    /* Copy data to temp arrays first[] and second[] */
-    for (i = 0; i < n1; i++)
-        first.push_back(vector_housing[lhs + i]);
-    for (j = 0; j < n2; j++)
-        second.push_back(vector_housing[middle + j + 1]);
-
-    /* Merge the temp arrays back into vector*/
-    i = 0; // Initial index of first subarray
-    j = 0; // Initial index of second subarray
-    k = lhs; // Initial index of merged subarray
+    auto i = 0;
+    auto j = 0;
+    auto k = 0;
+    auto x = middle - lhs + 1;
+    auto y = rhs - middle;
+    std::vector<Node_Struct> temp_vector_housing;
+    std::vector<Node_Struct> temp_vector_housing_2;
+    for (i = 0; i < x; i++)
+        temp_vector_housing.push_back(vector_housing[lhs + i]);
+    for (j = 0; j < y; j++)
+        temp_vector_housing_2.push_back(vector_housing[middle + j + 1]);
+    i = 0, j = 0, k = lhs;
     if (to_merge == "Film") {
-        while (i < n1 && j < n2) {
-            if (first[i].Film <= second[j].Film) {
-                vector_housing[k] = first[i];
+        while (i < x && j < y) {
+            if (temp_vector_housing[i].Film <= temp_vector_housing_2[j].Film) {
+                vector_housing[k] = temp_vector_housing[i];
                 i++;
             } else {
-                vector_housing[k] = second[j];
+                vector_housing[k] = temp_vector_housing_2[j];
                 j++;
             }
             k++;
         }
     } else if (to_merge == "Year") {
-        while (i < n1 && j < n2) {
-            if (first[i].Year <= second[j].Year) {
-                vector_housing[k] = first[i];
+        while (i < x && j < y) {
+            if (temp_vector_housing[i].Year <= temp_vector_housing_2[j].Year) {
+                vector_housing[k] = temp_vector_housing[i];
                 i++;
             } else {
-                vector_housing[k] = second[j];
+                vector_housing[k] = temp_vector_housing_2[j];
                 j++;
             }
             k++;
         }
     } else if (to_merge == "Rating") {
-        while (i < n1 && j < n2) {
-            if (first[i].Rating <= second[j].Rating) {
-                vector_housing[k] = first[i];
+        while (i < x && j < y) {
+            if (temp_vector_housing[i].Rating <= temp_vector_housing_2[j].Rating) {
+                vector_housing[k] = temp_vector_housing[i];
                 i++;
             } else {
-                vector_housing[k] = second[j];
+                vector_housing[k] = temp_vector_housing_2[j];
                 j++;
             }
             k++;
         }
     } else if (to_merge == "Nominations") {
-        while (i < n1 && j < n2) {
-            if (first[i].Nominations <= second[j].Nominations) {
-                vector_housing[k] = first[i];
+        while (i < x && j < y) {
+            if (temp_vector_housing[i].Nominations <= temp_vector_housing_2[j].Nominations) {
+                vector_housing[k] = temp_vector_housing[i];
                 i++;
             } else {
-                vector_housing[k] = second[j];
+                vector_housing[k] = temp_vector_housing_2[j];
                 j++;
             }
             k++;
         }
     } else if (to_merge == "Genre1") {
-        while (i < n1 && j < n2) {
-            if (first[i].Rating <= second[j].Rating) {
-                vector_housing[k] = first[i];
+        while (i < x && j < y) {
+            if (temp_vector_housing[i].Rating <= temp_vector_housing_2[j].Rating) {
+                vector_housing[k] = temp_vector_housing[i];
                 i++;
             } else {
-                vector_housing[k] = second[j];
+                vector_housing[k] = temp_vector_housing_2[j];
                 j++;
             }
             k++;
         }
     }
-    /* Copy the remaining elements of first[], if there
-       are any */
-    while (i < n1) {
-        vector_housing[k] = first[i];
-        i++;
-        k++;
+    while (i < x) {
+        vector_housing[k] = temp_vector_housing[i];
+        i++, k++;
     }
-
-    /* Copy the remaining elements of second[], if there
-       are any */
-    while (j < n2) {
-        vector_housing[k] = second[j];
-        j++;
-        k++;
+    while (j < y) {
+        vector_housing[k] = temp_vector_housing_2[j];
+        j++, k++;
     }
-    first.clear();
-    second.clear();
+    temp_vector_housing.clear();
+    temp_vector_housing_2.clear();
 }
 
-void sort(const std::string &to_sort, vector<Node_Struct> &vector_housing, int lhs, int rhs) {
-    //Merge sort
+void sort(const std::string &to_sort, std::vector<Node_Struct> &vector_housing, int lhs, int rhs) {
     if (lhs < rhs) {
-        int m = lhs + (rhs - lhs) / 2;
+        auto m = lhs + (rhs - lhs) / 2;
         sort(to_sort, vector_housing, lhs, m);
         sort(to_sort, vector_housing, m + 1, rhs);
         merge(to_sort, vector_housing, lhs, m, rhs);
-    }
+    } else { return; }
 }
 
-void write_to_file(const std::string &user_input, Node<Node_Struct, string> *node,
-                   Binary_Search_Tree<Node_Struct, string> &tree_housing) {
-    if (node == nullptr)
-        return;
-    std::ofstream output("new_" + user_input, std::ios_base::trunc);
+void write_to_file(const std::string &user_input, Node<Node_Struct, std::string> *node,
+                   Binary_Search_Tree<Node_Struct, std::string> &tree_housing) {
+    if (node == nullptr) { return; }
+    std::ofstream output("new_" + user_input);
     to_file(output, node, tree_housing);
     output.close();
 }
 
-void to_file(std::ofstream &outfile, Node<Node_Struct, string> *node,
-             Binary_Search_Tree<Node_Struct, string> &tree_housing) {
-    if (node == nullptr) {
-        return;
-    }
+void to_file(std::ofstream &outfile, Node<Node_Struct, std::string> *node,
+             Binary_Search_Tree<Node_Struct, std::string> &tree_housing) {
+    if (node == nullptr) { return; }
     to_file(outfile, node->leaf_left(), tree_housing);
     tree_housing.display(outfile, node->Data());
     to_file(outfile, node->leaf_right(), tree_housing);
 }
 
-void vector_to_console(vector<Node_Struct> &vector_storage) {
-
+void vector_to_console(std::vector<Node_Struct> &vector_storage) {
     for (const auto &iterator : vector_storage) {
         (iterator.Genre2.empty() ?
-         cout
+         std::cout
                  << GREEN_BOLD << "\nYear: " << CLEAR
                  << iterator.Year << std::endl
                  << GREEN_BOLD << "Award: " << CLEAR
@@ -408,7 +371,7 @@ void vector_to_console(vector<Node_Struct> &vector_storage) {
                  << GREEN_BOLD << "Film: " << CLEAR
                  << iterator.Film << std::endl
                                  :
-         cout
+         std::cout
                  << GREEN_BOLD << "\nName:" << CLEAR
                  << iterator.Name << std::endl
                  << GREEN_BOLD << "Year: " << CLEAR

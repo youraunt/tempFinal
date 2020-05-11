@@ -15,8 +15,6 @@
 
 #define WHAT_IS(x) std::cerr << #x << " is " << x << std::endl;
 
-
-
 /// @brief colors
 #define CLEAR "\033[0m"
 #define RED_BOLD "\033[1m\033[31m"
@@ -58,7 +56,7 @@ static const char MENU_TITLE[] =
         "\x1b[0m";
 
 inline int get_menu_choice(int number_of_choices) {
-    int choice = 0;
+    auto choice = 0;
     do {
         std::cout << GREEN << "> " << CLEAR;
         std::cin >> choice;
@@ -70,7 +68,7 @@ inline int get_menu_choice(int number_of_choices) {
                       << number_of_choices << std::endl
                       << "0 to exit." << std::endl;
         }
-    } while (choice > number_of_choices);
+    } while (choice > number_of_choices || choice < 0);
     return choice;
 }
 
@@ -184,7 +182,7 @@ inline bool sort_pictures_sub_display() {
 
 }
 
-inline bool picture_search_sub_display(){
+inline bool picture_search_sub_display() {
     std::cout
             << MENU_TITLE
             << YELLOW
@@ -200,6 +198,20 @@ inline bool picture_search_sub_display(){
     return true;
 }
 
+inline bool modify__menu_display() {
+    std::cout
+            << MENU_TITLE
+            << YELLOW
+            << "Please select a way to search and press [Enter]." << std::endl
+            << CLEAR << "Select which section you want to modify." << std::endl
+            << "1. Year" << std::endl
+            << "2. Award" << std::endl
+            << "3. Winner" << std::endl
+            << "4. Name" << std::endl
+            << "5. Film" << std::endl
+            << "0. Exit Program" << std::endl;
+    return true;
+}
 
 /// @brief Exits program successfully with message
 [[noreturn]] inline void exit_program() {
@@ -220,31 +232,31 @@ inline bool picture_search_sub_display(){
     exit(EXIT_FAILURE);
 }
 
-void add_entry(std::string &user_input, Binary_Search_Tree<Node_Struct, string> &tree_housing);
+void add_entry(std::string &user_input, Binary_Search_Tree<Node_Struct, std::string> &tree_housing);
 
-void delete_entry(Binary_Search_Tree<Node_Struct, string> &tree);
+void delete_entry(Binary_Search_Tree<Node_Struct, std::string> &tree);
 
-void modify_entry(std::string &user_input, Binary_Search_Tree<Node_Struct, string> &tree_housing);
+void modify_entry(std::string &user_input, Binary_Search_Tree<Node_Struct, std::string> &tree_housing);
 
 void
 sub_string_search(std::string &user_input, std::string &to_search, Node<Node_Struct, std::string> *tree_pointer,
                   Binary_Search_Tree<Node_Struct, std::string> &tree_housing);
 
-void precise_search(std::string &user_input, std::string &to_search, Node<Node_Struct, string> *tree_pointer,
-                    Binary_Search_Tree<Node_Struct, string> &tree_housing);
+void precise_search(std::string &user_input, std::string &to_search, Node<Node_Struct, std::string> *tree_pointer,
+                    Binary_Search_Tree<Node_Struct, std::string> &tree_housing);
 
-void sort(const std::string &to_sort, vector<Node_Struct> &vector_housing, int lhs, int rhs);
+void sort(const std::string &to_sort,std:: vector<Node_Struct> &vector_housing, int lhs, int rhs);
 
-void merge(const std::string &to_merge, vector<Node_Struct> &vector_housing, int lhs, int middle,
+void merge(const std::string &to_merge, std::vector<Node_Struct> &vector_housing, int lhs, int middle,
            int rhs);
 
 void
-write_to_file(const std::string &user_input, Node<Node_Struct, string> *node,
-              Binary_Search_Tree<Node_Struct, string> &tree_housing);
+write_to_file(const std::string &user_input, Node<Node_Struct, std::string> *node,
+              Binary_Search_Tree<Node_Struct, std::string> &tree_housing);
 
 void
-to_file(std::ofstream &outfile, Node<Node_Struct, string> *node, Binary_Search_Tree<Node_Struct, string> &tree_housing);
+to_file(std::ofstream &outfile, Node<Node_Struct, std::string> *node, Binary_Search_Tree<Node_Struct, std::string> &tree_housing);
 
-void vector_to_console(vector<Node_Struct> &vector_storage);
+void vector_to_console(std::vector<Node_Struct> &vector_storage);
 
 #endif //TEMPFINAL_FUNCTIONS_H

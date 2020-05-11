@@ -8,7 +8,6 @@
 #include <iostream>
 #include "Node.h"
 
-using namespace std;
 
 // Binary Search Tree class
 template<typename DATATYPE, typename KEYTYPE>
@@ -46,7 +45,7 @@ public:
 
     void in_order();
 
-    void display(ostream &output, const DATATYPE &data);
+    void display(std::ostream &output, const DATATYPE &data);
 
     void remove(KEYTYPE key);
 

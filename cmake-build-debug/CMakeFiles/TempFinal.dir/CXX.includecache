@@ -16,6 +16,12 @@ Node.h
 Binary_Search_Tree.h
 /Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/Binary_Search_Tree.h
 
+/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/Functions.cpp
+Functions.h
+/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/Functions.h
+Menus.h
+/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/Menus.h
+
 /Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/Functions.h
 iostream
 -
@@ -31,10 +37,6 @@ fstream
 -
 Binary_Search_Tree.hpp
 /Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/Binary_Search_Tree.hpp
-
-/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/Menus.cpp
-Menus.h
-/Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/Menus.h
 
 /Users/bkallen/Desktop/gDriveDB/2020/Spring/CSCI-2421 Data Structures/TempFinal/Menus.h
 iostream
