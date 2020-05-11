@@ -206,23 +206,24 @@ void pictures_search_sub_menu(const std::string &user_input, Node<Node_Struct, s
                               Binary_Search_Tree<Node_Struct, string> &tree_housing) {
     unsigned int choice{};
     std::string field;
-    std::cout
-            << SEARCH_SUB_MENU_TITLE
-            << BLUE_BOLD
-            << "Current File: "
-            << CLEAR
-            << user_input << std::endl
-            << "1. Year" << endl
-            << "2. Film" << endl
-            << "3. Nominations" << endl
-            << "4. Genre" << endl
-            << "5. Release" << endl
-            << "6. Main Menu" << endl
-            << GREEN
-            << "> "
-            << CLEAR;
-    std::cin >> choice;
     do {
+        std::cout
+                << SEARCH_SUB_MENU_TITLE
+                << BLUE_BOLD
+                << "Current File: "
+                << CLEAR
+                << user_input << std::endl
+                << "1. Year" << endl
+                << "2. Film" << endl
+                << "3. Nominations" << endl
+                << "4. Genre" << endl
+                << "5. Release" << endl
+                << "6. Main Menu" << endl
+                << GREEN
+                << "> "
+                << CLEAR;
+        std::cin >> choice;
+
         switch (choice) {
             case 1:
                 std::cout
@@ -401,6 +402,7 @@ void sub_menu(std::string user_input, vector<Node_Struct> &vector_housing, std::
 
 
 void enter_program(void) {
+    bool called = false;
     auto choice = 0;
     std::ifstream infile;
     std::string csv_file_name;
@@ -424,10 +426,17 @@ void enter_program(void) {
         std::cin >> choice;
         switch (choice) {
             case 1:
-                csv_file_name = R"(actor-actress.csv)";
-                infile.open("actor-actress.csv", std::ios_base::in);
-                actor_in(infile, *actor_actress_binary_search_tree, storage_vector);
-                sub_menu(csv_file_name, storage_vector, infile, *actor_actress_binary_search_tree, 0);
+                if (!called) {
+                    called = true;
+                    csv_file_name = R"(actor-actress.csv)";
+                    infile.open("actor-actress.csv", std::ios_base::in);
+                    actor_in(infile, *actor_actress_binary_search_tree, storage_vector);
+                    std::cout << RED_BOLD << "\nSuccessfully read in!\n" << CLEAR << std::endl;
+                    sub_menu(csv_file_name, storage_vector, infile, *actor_actress_binary_search_tree, 0);
+                } else if (called) {
+                    std::cout << "CSV already loaded" << std::endl;
+                    sub_menu(csv_file_name, storage_vector, infile, *actor_actress_binary_search_tree, 0);
+                }
                 break;
             case 2:
                 csv_file_name = R"(pictures.csv)";
