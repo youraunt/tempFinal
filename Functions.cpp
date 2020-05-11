@@ -2,17 +2,21 @@
 // Created by BK Allen on 5/2/20.
 //
 #include "Functions.h"
+#include "Menus.h"
 #include <string>
 
 using namespace std;
-
-void exactSearchRecord(std::string &user_input, std::string &to_search, Node<Node_Struct, string> *tree_pointer,
-                       Binary_Search_Tree<Node_Struct, string> &tree_housing) {
-    //Travel entire tree and find if record is match whichever user input
+/// @brief Searches for exact matches
+/// @param user_input
+/// @param to_search
+/// @param tree_pointer
+/// @param tree_housing
+void precise_search(std::string &user_input, std::string &to_search, Node<Node_Struct, string> *tree_pointer,
+                    Binary_Search_Tree<Node_Struct, string> &tree_housing) {
     if (tree_pointer == nullptr) {
         return;
     }
-    exactSearchRecord(user_input, to_search, tree_pointer->leaf_left(), tree_housing);
+    precise_search(user_input, to_search, tree_pointer->leaf_left(), tree_housing);
     if (to_search == "Name") {
         if (tree_pointer->Data().Name == user_input) {
             tree_housing.display(std::cout, tree_pointer->Data());
@@ -42,16 +46,15 @@ void exactSearchRecord(std::string &user_input, std::string &to_search, Node<Nod
             tree_housing.display(cout, tree_pointer->Data());
         }
     }
-    exactSearchRecord(user_input, to_search, tree_pointer->leaf_right(), tree_housing);
+    precise_search(user_input, to_search, tree_pointer->leaf_right(), tree_housing);
 }
 
-void partialSearchRecord(std::string &user_input, std::string &to_search, Node<Node_Struct, std::string> *tree_pointer,
-                         Binary_Search_Tree<Node_Struct, std::string> &tree_housing) {
-    //Travel entire tree and find if record is partial match whichever user input
+void sub_string_search(std::string &user_input, std::string &to_search, Node<Node_Struct, std::string> *tree_pointer,
+                       Binary_Search_Tree<Node_Struct, std::string> &tree_housing) {
     if (tree_pointer == nullptr) {
         return;
     }
-    partialSearchRecord(user_input, to_search, tree_pointer->leaf_left(), tree_housing);
+    sub_string_search(user_input, to_search, tree_pointer->leaf_left(), tree_housing);
     if (to_search == "Name") {
         if (tree_pointer->Data().Name.find(user_input) != std::string::npos) {
             tree_housing.display(std::cout, tree_pointer->Data());
@@ -82,154 +85,145 @@ void partialSearchRecord(std::string &user_input, std::string &to_search, Node<N
             tree_housing.display(cout, tree_pointer->Data());
         }
     }
-    partialSearchRecord(user_input, to_search, tree_pointer->leaf_right(), tree_housing);
+    sub_string_search(user_input, to_search, tree_pointer->leaf_right(), tree_housing);
 
 }
 
 void add_entry(std::string &user_input, Binary_Search_Tree<Node_Struct, std::string> &tree_housing) {
     Node_Struct newRecord;
     if (user_input != "pictures.csv") {
-        std::cout << "\nYear: ";
-        cin >> newRecord.Year;
-        cout << "\nAward: ";
-        cin.ignore();
-        getline(cin, newRecord.Award);
-        cout << "\nWinner:" << endl;
-        cin >> newRecord.Winner;
-        cout << "\nName:" << endl;
-        cin.ignore();
-        getline(cin, newRecord.Name);
-        cout << "\nFilm" << endl;
-        getline(cin, newRecord.Film);
+        std::cout << "Year: " << std::endl;
+        std::cin >> newRecord.Year;
+        std::cout << "Award: " << std::endl;
+        std::getline(std::cin.ignore(), newRecord.Award);
+        std::cout << "Winner: " << std::endl;
+        std::cin >> newRecord.Winner;
+        std::cout << "Name: " << std::endl;
+        std::getline(std::cin.ignore(), newRecord.Name);
+        std::cout << "Film: " << std::endl;
+        std::getline(std::cin.ignore(), newRecord.Film);
         tree_housing.add_node(newRecord.Name, newRecord);
     } else {
-        cout << "\nName:" << endl;
-        cin.ignore();
-        getline(cin, newRecord.Name);
-        cout << "\nYear:" << endl;
-        getline(cin, newRecord.Year);
-        cout << "\nNominations:" << endl;
-        cin >> newRecord.Nominations;
-        cout << "\nRating:" << endl;
-        cin >> newRecord.Rating;
-        cout << "\nDuration:" << endl;
-        cin >> newRecord.Duration;
-        cout << "\nGenre1:" << endl;
-        cin.ignore();
-        getline(cin, newRecord.Genre1);
-        cout << "\nGenre2:" << endl;
-        getline(cin, newRecord.Genre2);
-        cout << "\nRelease:" << endl;
-        getline(cin, newRecord.Release);
-        cout << "\nMeta-critic:" << endl;
-        cin >> newRecord.Meta_Critic;
-        cout << "Synopsis:" << endl;
-        cin.ignore();
-        getline(cin, newRecord.Synopsis);
+        std::cout << "Name: " << std::endl;
+        std::cin.ignore();
+        std::getline(std::cin, newRecord.Name);
+        std::cout << "Year: " << std::endl;
+        std::getline(std::cin, newRecord.Year);
+        std::cout << "Nominations: " << std::endl;
+        std::cin >> newRecord.Nominations;
+        std::cout << "Rating: " << std::endl;
+        std::cin >> newRecord.Rating;
+        std::cout << "Duration: " << std::endl;
+        std::cin >> newRecord.Duration;
+        std::cout << "Primary Genre: " << std::endl;
+        std::cin.ignore();
+        std::getline(std::cin, newRecord.Genre1);
+        std::cout << "Secondary Genre:" << std::endl;
+        std::getline(cin, newRecord.Genre2);
+        std::cout << "Release:" << std::endl;
+        std::getline(std::cin, newRecord.Release);
+        std::cout << "Meta-critic:" << std::endl;
+        std::cin >> newRecord.Meta_Critic;
+        std::cout << "Synopsis:" << std::endl;
+        std::cin.ignore();
+        std::getline(std::cin, newRecord.Synopsis);
         tree_housing.add_node(newRecord.Name, newRecord);
     }
-    cout << "Successful add:" << endl;
-    tree_housing.display(cout, newRecord);
+    tree_housing.display(std::cout, newRecord);
 }
 
 void delete_entry(Binary_Search_Tree<Node_Struct, std::string> &tree) {
-    //Travel the tree to find match record that user want to delete
-    cout << "Please input name of actor you want to delete:" << endl;
     Node_Struct record;
-    cin.ignore();
-    getline(cin, record.Name);
+    std::cout << "Enter an actor or actress to search for: " << std::endl;
+    std::cin.ignore();
+    std::getline(std::cin, record.Name);
     if (tree.find(record.Name) != nullptr) {
         tree.remove(record.Name);
-    } else {
-        cout << "Record is already deleted or not in database" << endl;
+        std::cout << "I have deleted " << RED_BOLD << record.Name << CLEAR << " for you." << std::endl;
+    } else if (tree.find(record.Name = nullptr)) {
+        std::cout << "No matches!" << std::endl;
     }
 }
 
 void modify_entry(
         std::string &user_input,
-        Binary_Search_Tree<Node_Struct, string> &tree_housing,
-        int choice = 0) {
-    //Travel the tree and find match record and modify it
+        Binary_Search_Tree<Node_Struct, string> &tree_housing) {
+    auto choice = 0;
     Node_Struct changeRecord;
     Node<Node_Struct, string> *treePtr;
     string field;
-    cout << "Please input name of record you want to modify. Please input name of actor or actress first:" << endl;
-    cin.ignore();
-    getline(cin, field);
+    std::cout << "Enter an actor or actress to search for: " << std::endl;
+    std::cin.ignore();
+    std::getline(std::cin, field);
     treePtr = tree_housing.find(field);
     if (treePtr == nullptr) {
-        cout << "Record is not exist in database. You can't modify it" << endl;
+        std::cout << "No matches!" << std::endl;
     } else {
         if (user_input == "pictures.csv") {
             do {
-                std::cout
-                        << "How would you want to change it" << std::endl
-                        << "1. to change year" << std::endl
-                        << "2. to change Nominations" << std::endl
-                        << "3. to change Rating" << std::endl
-                        << "4. to change Duration" << std::endl
-                        << "5. to change Genre1" << std::endl
-                        << "input 6 to change Genre2" << std::endl
-                        << "input -1 if you want to exit" << std::endl;
-                std::cin >> choice;
+                modify_menu_display();
+                choice = get_menu_choice(8);
                 changeRecord = treePtr->Data();
                 switch (choice) {
-                    case 0: {
-                        cout << "Input Name. For example: Birdman" << endl;
+                    case 1: {
+                        cout << "Name: " << endl;
                         cin.ignore();
                         getline(cin, changeRecord.Name);
                         break;
                     }
-                    case 1: {
-                        cout << "Input Year. For example: 2018" << endl;
+                    case 2: {
+                        cout << "Year: " << endl;
                         cin >> changeRecord.Year;
                         break;
                     }
-                    case 2: {
-                        cout << "Input Nominations. Must be an integer" << endl;
+                    case 3: {
+                        cout << "Nominations: " << endl;
                         cin >> changeRecord.Nominations;
                         break;
                     }
-                    case 3: {
-                        cout << "Input Rating. Must be a real number" << endl;
+                    case 4: {
+                        cout << "Rating: " << endl;
                         cin >> changeRecord.Rating;
                         break;
                     }
-                    case 4: {
-                        cout << "Input Duration.Must be a real number" << endl;
+                    case 5: {
+                        cout << "Length: " << endl;
                         cin >> changeRecord.Duration;
                         break;
                     }
-                    case 5: {
-                        cout << "Input Genre1. For example: Comedy" << endl;
+                    case 6: {
+                        cout << "First Genre: " << endl;
                         cin >> changeRecord.Genre1;
                         break;
                     }
-                    case 6: {
-                        cout << "Input Genre2. For example: Drama" << endl;
+                    case 7: {
+                        cout << "Secondary Genre: " << endl;
                         cin >> changeRecord.Genre2;
                         break;
                     }
+                    case 8:
+                        enter_program();
+                    case 0:
+                        exit_program();
                     default: {
                         std::cout << "Invalid Input!" << std::endl;
                         break;
                     }
                 }
                 treePtr->setData(changeRecord);
-                cout << "Your modified record is" << endl;
+                std::cout << "New record added:" << std::endl;
                 tree_housing.display(cout, changeRecord);
             } while (choice != 7);
         } else if (user_input == "actor-actress.csv" || user_input == "Nominations.csv") {
-            int menu;
-            cout << "Record you want to change is in the database" << endl;
+            int menu{};
+            std::cout << "Record you want to change is in the database" << std::endl;
             do {
-                cout << "How would you want to change it" << endl;
-                cout << "Input 0 to change Year" << endl;
-                cout << "input 1 to change Award" << endl;
-                cout << "Input 2 to change winner" << endl;
-                cout << "Input 3 to change name" << endl;
-                cout << "Input 4 to change film" << endl;
-                cout << "input -1 if you want to exit" << endl;
+                std::cout << "Input 0 to change Year" << std::endl
+                          << "input 1 to change Award" << std::endl
+                          << "Input 2 to change winner" << std::endl
+                          << "Input 3 to change name" << std::endl
+                          << "Input 4 to change film" << std::endl
+                          << "input -1 if you want to exit" << std::endl;
                 cin >> menu;
                 changeRecord = treePtr->Data();
                 switch (menu) {
@@ -383,7 +377,7 @@ void write_to_file(const std::string &user_input, Node<Node_Struct, string> *nod
                    Binary_Search_Tree<Node_Struct, string> &tree_housing) {
     if (node == nullptr)
         return;
-    std::ofstream output("new_" + user_input, std::ios_base::out);
+    std::ofstream output("new_" + user_input, std::ios_base::trunc);
     to_file(output, node, tree_housing);
     output.close();
 }

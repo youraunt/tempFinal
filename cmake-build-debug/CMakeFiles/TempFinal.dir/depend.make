@@ -5,7 +5,9 @@ CMakeFiles/TempFinal.dir/Functions.cpp.o: ../Binary_Search_Tree.h
 CMakeFiles/TempFinal.dir/Functions.cpp.o: ../Binary_Search_Tree.hpp
 CMakeFiles/TempFinal.dir/Functions.cpp.o: ../Functions.cpp
 CMakeFiles/TempFinal.dir/Functions.cpp.o: ../Functions.h
+CMakeFiles/TempFinal.dir/Functions.cpp.o: ../Menus.h
 CMakeFiles/TempFinal.dir/Functions.cpp.o: ../Node.h
+CMakeFiles/TempFinal.dir/Functions.cpp.o: ../Read_From_File.h
 
 CMakeFiles/TempFinal.dir/Menus.cpp.o: ../Binary_Search_Tree.h
 CMakeFiles/TempFinal.dir/Menus.cpp.o: ../Binary_Search_Tree.hpp

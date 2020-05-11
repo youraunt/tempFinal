@@ -16,16 +16,19 @@
 
 struct Node_Struct
 {
+    double Rating;
+    int Nominations;
+    int Duration;
+    int Meta_Critic;
     std::string Award;
     std::string Winner;
     std::string Name;
     std::string Film;
     std::string Year;
-    double Rating;
-    int Nominations;
-    int Duration;
-    int Meta_Critic;
-    std::string Genre1,Genre2,Release,Synopsis;
+    std::string Genre1;
+    std::string Genre2;
+    std::string Release;
+    std::string Synopsis;
 };
 
 
